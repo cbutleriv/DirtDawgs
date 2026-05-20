@@ -285,9 +285,10 @@ const currentPath = Astro.url.pathname;
       display: none;
     }
 
-    /* Pull logo flush with the left edge on mobile */
+    /* Push logo flush to the right viewport edge on mobile */
     .header-inner {
-      padding-inline-start: 4px;
+      justify-content: flex-end;
+      padding-inline-end: 0;
     }
 
     .brand {
@@ -296,6 +297,7 @@ const currentPath = Astro.url.pathname;
 
     .monogram {
       transition: opacity var(--duration-base) var(--ease-brand);
+      transform: translateX(40px);
     }
 
     .monogram:active {
