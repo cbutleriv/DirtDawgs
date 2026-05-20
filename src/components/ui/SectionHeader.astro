@@ -1,0 +1,55 @@
+---
+/**
+ * SectionHeader — eyebrow + H1/H2 pattern used on interior page headers.
+ * Not the same as the Eyebrow atom; this is a full block with page-level padding.
+ */
+interface Props {
+  eyebrow: string;
+  heading: string;
+  /** Set to true on pages that sit on a navy/dark background */
+  dark?: boolean;
+  class?: string;
+}
+
+const { eyebrow, heading, dark = false, class: className } = Astro.props;
+---
+
+<div class:list={['section-header', { dark }, className]}>
+  <p class="eyebrow-text">{eyebrow}</p>
+  <h1 class="heading">{heading}</h1>
+</div>
+
+<style>
+  .section-header {
+    padding-block: clamp(64px, 8vw, 96px) clamp(48px, 6vw, 72px);
+  }
+
+  .eyebrow-text {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 16px;
+  }
+
+  .heading {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: var(--fs-h1);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+    color: var(--color-navy);
+    margin: 0;
+  }
+
+  .dark .eyebrow-text {
+    color: var(--color-gold);
+  }
+
+  .dark .heading {
+    color: var(--color-offwhite);
+  }
+</style>

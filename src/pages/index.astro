@@ -1,0 +1,891 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Button from '../components/ui/Button.astro';
+import PullQuote from '../components/ui/PullQuote.astro';
+import VideoIntro from '../components/VideoIntro.astro';
+
+const teams = [
+  {
+    id: '11u',
+    ageLabel: '11U / 12U',
+    badge: 'Rising to 12U',
+    coachName: 'Manny Guzman',
+    href: '/teams/11u',
+  },
+  {
+    id: '10u',
+    ageLabel: '10U',
+    badge: 'Tryouts Open',
+    coachName: 'Angel Montano',
+    href: '/teams/10u',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Home"
+  description="Bakersfield Dirt Dawgs — youth travel baseball in Bakersfield, CA. Built in the Dirt. Grounded in Faith."
+  canonicalPath="/"
+>
+  <VideoIntro />
+
+  <!-- ═══════════════════════════════════════════
+       01  HERO
+       Full-bleed B&W photo, navy overlay, typography-led.
+       ═══════════════════════════════════════════ -->
+  <section class="hero" aria-label="Bakersfield Dirt Dawgs — Built in the Dirt. Grounded in Faith.">
+
+    <!-- Photo layer — swap src for real B&W action shot before launch -->
+    <div class="hero-photo" role="img" aria-label="Youth baseball action photo" style="background-image: url('/images/hero-placeholder.svg');"></div>
+
+    <!-- Flat navy overlay — rgba(11,27,59,0.45), no blur -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <!-- Stat strip -->
+      <div class="hero-meta" aria-label="Program identity">
+        <span>Bakersfield Dirt Dawgs</span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span>11U</span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span>Est. 2025</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-dirt">Built in the Dirt.</span>
+        <span class="hero-title-rule" aria-hidden="true"></span>
+        <span class="hero-title-faith">Grounded in Faith.</span>
+      </h1>
+
+      <div class="hero-ctas">
+        <Button href="/tryouts">Request a Tryout</Button>
+        <a href="/about" class="hero-text-link">Learn About Us →</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       02  MISSION EXCERPT
+       Cream section — pull-quote + short body + CTA
+       ═══════════════════════════════════════════ -->
+  <section class="section cream-section" aria-labelledby="mission-heading">
+    <div class="container">
+      <Eyebrow num="02">Our Mission</Eyebrow>
+
+      <div class="mission-grid reveal">
+        <PullQuote>
+          "We're a development program first. Wins follow the work."
+        </PullQuote>
+
+        <div class="mission-body">
+          <p>
+            The Bakersfield Dirt Dawgs run year-round on the USSSA circuit. We coach the
+            fundamentals — footwork, throws, plate discipline — and we let the wins follow the
+            work.
+          </p>
+          <p>
+            Practice is in the dirt, not the marketing copy. We don't sell showcases. We coach
+            baseball, and we coach the kind of players parents are glad to bring home.
+          </p>
+          <Button href="/about" variant="link" class="mission-cta">Read Full Mission →</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       03  TWO-TEAM SHOWCASE
+       Off-white — side-by-side team cards
+       ═══════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="teams-heading">
+    <div class="container">
+      <div class="teams-eyebrow-row">
+        <Eyebrow num="03" class="teams-eyebrow">Our Teams</Eyebrow>
+        <span class="teams-standard" aria-hidden="true">Two Teams. One Standard.</span>
+      </div>
+
+      <div class="teams-grid reveal">
+        {teams.map((team) => (
+          <article class="team-card" aria-label={`${team.ageLabel} team — Coach ${team.coachName}`}>
+            <!-- Team photo placeholder — replace with real team photo -->
+            <div
+              class="team-photo"
+              role="img"
+              aria-label={`${team.ageLabel} team photo`}
+              style="background-image: url('/images/player-placeholder.svg');"
+            ></div>
+
+            <div class="team-caption">
+              <div class="team-info">
+                <span class="team-age">{team.ageLabel}</span>
+                <span class="team-badge">{team.badge}</span>
+                <h3 class="team-coach-name">Coach <em>{team.coachName}</em></h3>
+              </div>
+              <a href={team.href} class="team-link" aria-label={`View ${team.ageLabel} team`}>
+                View Team →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       04  FAITH BAND
+       Dark navy — single scripture line, centered
+       ═══════════════════════════════════════════ -->
+  <section class="section faith-section" aria-label="Program values">
+    <div class="container faith-inner">
+      <blockquote class="faith-quote reveal">
+        <span class="faith-rule" aria-hidden="true"></span>
+        <p>"Whatever you do, work at it with all your heart."</p>
+        <cite>Colossians 3:23</cite>
+        <span class="faith-rule" aria-hidden="true"></span>
+      </blockquote>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       05  RECENT GALLERY TEASER
+       Off-white — 4-image grid preview
+       ═══════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="gallery-teaser-heading">
+    <div class="container">
+      <div class="split-eyebrow-row">
+        <div class="split-eyebrow-left">
+          <span class="spl-num" aria-hidden="true">05</span>
+          <span class="spl-line" aria-hidden="true"></span>
+          <span id="gallery-teaser-heading" class="spl-label">Recent</span>
+        </div>
+        <a href="/gallery" class="spl-action" aria-label="View full gallery">View Gallery →</a>
+      </div>
+
+      <!-- 4-image grid; swap background-images for real photos before launch -->
+      <div class="gallery-grid reveal" aria-label="Recent photo previews">
+        {[1, 2, 3, 4].map((n) => (
+          <a
+            href="/gallery"
+            class="gallery-cell"
+            aria-label={`Gallery photo ${n}`}
+          >
+            <div
+              class="gallery-photo"
+              style="background-image: url('/images/hero-placeholder.svg');"
+            ></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       06  SPONSORS STRIP
+       Cream — single row of logo placeholders
+       ═══════════════════════════════════════════ -->
+  <section class="section cream-section" aria-labelledby="sponsors-strip-heading">
+    <div class="container">
+      <div class="split-eyebrow-row">
+        <div class="split-eyebrow-left">
+          <span class="spl-num" aria-hidden="true">06</span>
+          <span class="spl-line spl-line--cream" aria-hidden="true"></span>
+          <span id="sponsors-strip-heading" class="spl-label">Partners in the Program</span>
+        </div>
+        <a href="/sponsors" class="spl-action" aria-label="See all program sponsors">See All Sponsors →</a>
+      </div>
+
+      <!-- Logo strip; replace placeholders with real sponsor logos -->
+      <div class="sponsors-row reveal" aria-label="Program sponsors preview">
+        {[1, 2, 3, 4, 5].map((n) => (
+          <div class="sponsor-slot" aria-label={`Sponsor ${n} logo placeholder`}>
+            <span class="sponsor-text" aria-hidden="true">LOGO</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+<script>
+  // Fire hero entrance sequence when video intro completes (or immediately on return visits)
+  function activateHero() {
+    document.body.classList.add('hero-ready');
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    activateHero();
+  } else {
+    window.addEventListener('introComplete', activateHero, { once: true });
+  }
+</script>
+
+</BaseLayout>
+
+
+<style>
+  /* ═══════════════════════════════════════════
+     HERO ENTRANCE ANIMATIONS
+     Elements start invisible; .hero-ready on body
+     triggers the staggered sequence after the
+     video intro dismisses (or immediately on return visits).
+     ═══════════════════════════════════════════ */
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta,
+  .hero-title,
+  .hero-ctas {
+    opacity: 0;
+  }
+
+  body.hero-ready .hero-meta {
+    animation: fadeUp 500ms var(--ease-brand) both;
+  }
+
+  body.hero-ready .hero-title {
+    animation: fadeUp 620ms var(--ease-brand) 120ms both;
+  }
+
+  body.hero-ready .hero-ctas {
+    animation: fadeUp 560ms var(--ease-brand) 260ms both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-meta,
+    .hero-title,
+    .hero-ctas {
+      opacity: 1;
+      animation: none;
+    }
+  }
+
+
+  /* ═══════════════════════════════════════════
+     01  HERO
+     ═══════════════════════════════════════════ */
+
+  .hero {
+    position: relative;
+    background-color: var(--color-navy);
+    color: var(--color-offwhite);
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: right top;
+    filter: grayscale(1) contrast(1.05) brightness(0.82);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(11, 27, 59, 0.92) 0%,
+      rgba(11, 27, 59, 0.88) 38%,
+      rgba(11, 27, 59, 0.45) 62%,
+      rgba(11, 27, 59, 0.10) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-block: 80px;
+    width: 100%;
+  }
+
+  /* Gold stat strip: BAKERSFIELD DIRT DAWGS · 11U · EST. 2025 */
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 24px;
+    max-width: 42%;
+  }
+
+  .meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  /* Display headline — split Oswald / Playfair treatment */
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-display);
+    margin: 0 0 28px;
+    max-width: 42%;
+  }
+
+  .hero-title-dirt {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--color-offwhite);
+  }
+
+  .hero-title-rule {
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: clamp(12px, 1.4vw, 20px) 0;
+  }
+
+  .hero-title-faith {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--color-offwhite);
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    max-width: 42%;
+  }
+
+  /* Secondary "LEARN ABOUT US →" link on dark */
+  .hero-text-link {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-offwhite);
+    border-bottom: 1px solid rgba(250, 250, 247, 0.45);
+    padding-bottom: 2px;
+    transition: opacity var(--duration-base) var(--ease-brand);
+  }
+
+  .hero-text-link:hover {
+    opacity: 0.65;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     SECTION base
+     ═══════════════════════════════════════════ */
+
+  .section {
+    padding-block: var(--section-py);
+  }
+
+  .cream-section {
+    background-color: var(--color-cream);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     02  MISSION
+     ═══════════════════════════════════════════ */
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 48px;
+    align-items: start;
+  }
+
+  .mission-grid > :first-child {
+    padding-right: 60px;
+    border-right: 1px solid var(--color-gold);
+  }
+
+  .mission-grid > :last-child {
+    padding-left: 60px;
+  }
+
+  .mission-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .mission-body p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-ink-2);
+    margin: 0;
+  }
+
+  .mission-cta {
+    margin-top: 8px;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     03  TWO-TEAM SHOWCASE
+     ═══════════════════════════════════════════ */
+
+  /* Eyebrow row with secondary label on the right side */
+  .teams-eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .teams-eyebrow {
+    flex: 1;
+  }
+
+  .teams-standard {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .teams-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  /* Team photo — 4:3, desaturated, hairline border */
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(1) contrast(1.05);
+    border: 1px solid var(--color-divider-w);
+    transition: filter var(--duration-base) var(--ease-brand);
+  }
+
+  .team-card:hover .team-photo {
+    filter: grayscale(0.55) contrast(1.1) brightness(1.02);
+  }
+
+  .team-caption {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 18px;
+  }
+
+  .team-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* "11U / 12U" age label */
+  .team-age {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  /* "Rising to 12U" / "Tryouts Open" pill badge */
+  .team-badge {
+    font-family: var(--font-label);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    border: 1px solid var(--color-navy);
+    border-radius: 999px;
+    padding: 3px 8px;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  /* "Coach Manny Guzman" — Playfair italic */
+  .team-coach-name {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(17px, 1.4vw, 22px);
+    color: var(--color-navy);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .team-coach-name em {
+    font-style: italic;
+  }
+
+  /* "VIEW TEAM →" tertiary link */
+  .team-link {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-navy);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: opacity var(--duration-base) var(--ease-brand);
+    align-self: flex-end;
+  }
+
+  .team-link:hover {
+    opacity: 0.65;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     04  FAITH BAND
+     ═══════════════════════════════════════════ */
+
+  .faith-section {
+    background-color: var(--color-navy);
+  }
+
+  .faith-inner {
+    text-align: center;
+  }
+
+  .faith-quote {
+    margin: 0;
+    display: inline-block;
+    max-width: 680px;
+  }
+
+  .faith-quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.45;
+    color: var(--color-offwhite);
+    margin: 0 0 12px;
+  }
+
+  .faith-quote cite {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 250, 247, 0.45);
+    font-style: normal;
+  }
+
+  .faith-rule {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: 20px auto;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     SPLIT EYEBROW ROW
+     Used by sections 05 and 06 — num/label left,
+     action link right, expanding hairline between.
+     ═══════════════════════════════════════════ */
+
+  .split-eyebrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .split-eyebrow-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .spl-num {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .spl-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-divider-w);
+    min-width: 16px;
+  }
+
+  .spl-line--cream {
+    background: var(--color-divider);
+  }
+
+  .spl-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    flex-shrink: 0;
+  }
+
+  .spl-action {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-navy);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: opacity var(--duration-base) var(--ease-brand);
+  }
+
+  .spl-action:hover {
+    opacity: 0.65;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     05  GALLERY TEASER
+     ═══════════════════════════════════════════ */
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .gallery-cell {
+    display: block;
+    overflow: hidden;
+  }
+
+  /* Photos are full-color in gallery, slight contrast lift */
+  .gallery-photo {
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    filter: contrast(1.05) brightness(0.95);
+    transition: transform var(--duration-base) var(--ease-brand), filter var(--duration-base) var(--ease-brand);
+  }
+
+  .gallery-cell:hover .gallery-photo {
+    transform: scale(1.02);
+    filter: contrast(1.1) brightness(1);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     06  SPONSORS STRIP
+     ═══════════════════════════════════════════ */
+
+  .sponsors-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .sponsor-slot {
+    flex: 1;
+    height: 72px;
+    border: 1px solid var(--color-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    transition: border-color var(--duration-base) var(--ease-brand), box-shadow var(--duration-base) var(--ease-brand);
+  }
+
+  .sponsor-slot:hover {
+    border-color: var(--color-navy);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .sponsor-text {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════ */
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: 92svh;
+      justify-content: flex-start;
+    }
+
+    .hero-content {
+      padding-block: 48px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Push title + CTAs to bottom; meta stays at top */
+    .hero-title {
+      margin-top: auto;
+    }
+
+    /* Restore full-width text on mobile */
+    .hero-meta,
+    .hero-title,
+    .hero-ctas {
+      max-width: 100%;
+    }
+
+    .hero-photo {
+      background-position: center top;
+    }
+
+    /* Mission: stack PullQuote above body */
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mission-grid > :first-child {
+      padding-right: 0;
+      padding-bottom: 40px;
+      border-right: none;
+      border-bottom: 1px solid var(--color-gold);
+    }
+
+    .mission-grid > :last-child {
+      padding-left: 0;
+      padding-top: 40px;
+    }
+
+    /* Teams: stack cards */
+    .teams-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .teams-standard {
+      display: none; /* Clean up crowded eyebrow row on mobile */
+    }
+
+    /* Gallery: 2-column on mobile */
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Sponsors: 3 across on tablet */
+    .sponsors-row {
+      flex-wrap: wrap;
+    }
+
+    .sponsor-slot {
+      flex: 1 1 calc(33.333% - 14px);
+      min-width: 100px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    /* Hero: compact on mobile — just enough room for the photo above the text */
+    .hero {
+      min-height: 55svh;
+    }
+
+    /* Hero meta: hide dots on very small screens */
+    .meta-dot {
+      display: none;
+    }
+
+    .hero-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    /* Hero headline: scale down from 56px display to phone-friendly size */
+    .hero-title {
+      font-size: clamp(30px, 7vw, 40px);
+    }
+
+    .hero-title-rule {
+      margin: 10px 0;
+      width: 36px;
+    }
+
+    /* Mission: tighten inner spacing so section doesn't feel cavernous */
+    .mission-grid {
+      margin-top: 24px;
+    }
+
+    .mission-grid > :first-child {
+      padding-bottom: 24px;
+    }
+
+    .mission-grid > :last-child {
+      padding-top: 24px;
+    }
+
+    /* Sponsors: 2 across on small mobile */
+    .sponsor-slot {
+      flex: 1 1 calc(50% - 10px);
+    }
+
+    /* Split eyebrow: stack on very small */
+    .split-eyebrow-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .split-eyebrow-left {
+      width: 100%;
+    }
+  }
+</style>

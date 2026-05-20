@@ -1,0 +1,54 @@
+---
+/**
+ * Pill — small ALL CAPS label with pill shape (radius 999px).
+ * Used for team status badges like "RISING TO 12U", "TRYOUTS OPEN", "USSSA", etc.
+ *
+ * variant:
+ *   "outline"  — hairline border, transparent fill (default)
+ *   "filled"   — navy fill, off-white text
+ *   "gold"     — gold fill, navy text (use sparingly — accent only)
+ */
+interface Props {
+  variant?: 'outline' | 'filled' | 'gold';
+  class?: string;
+}
+
+const { variant = 'outline', class: className } = Astro.props;
+---
+
+<span class:list={['pill', `pill--${variant}`, className]}>
+  <slot />
+</span>
+
+<style>
+  .pill {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 4px 10px;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+
+  .pill--outline {
+    border: 1px solid var(--color-navy);
+    color: var(--color-navy);
+    background-color: transparent;
+  }
+
+  .pill--filled {
+    border: 1px solid var(--color-navy);
+    background-color: var(--color-navy);
+    color: var(--color-offwhite);
+  }
+
+  .pill--gold {
+    border: 1px solid var(--color-gold);
+    background-color: var(--color-gold);
+    color: var(--color-navy);
+  }
+</style>

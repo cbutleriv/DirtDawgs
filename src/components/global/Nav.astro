@@ -1,0 +1,373 @@
+---
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/teams', label: 'Teams' },
+  { href: '/schedule', label: 'Schedule' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/sponsors', label: 'Sponsors' },
+  { href: '/contact', label: 'Contact' },
+] as const;
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <!-- Logo -->
+    <a href="/" class="brand" aria-label="Bakersfield Dirt Dawgs — home">
+      <img
+        src="/logos/dd-logo-transparent.svg"
+        alt="Bakersfield Dirt Dawgs"
+        class="monogram"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={['nav-link', { active: currentPath === href || (href !== '/' && currentPath.startsWith(href)) }]}
+          aria-current={currentPath === href ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Primary CTA + mobile hamburger -->
+    <div class="header-actions">
+      <a href="/tryouts" class="btn-primary cta-desktop">Request a Tryout</a>
+      <button
+        class="hamburger"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-drawer"
+        aria-label="Open navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+  <nav class="drawer-nav" aria-label="Mobile navigation">
+    {navLinks.map(({ href, label }) => (
+      <a
+        href={href}
+        class:list={['drawer-link', { active: currentPath === href }]}
+        aria-current={currentPath === href ? 'page' : undefined}
+      >
+        {label}
+      </a>
+    ))}
+  </nav>
+  <a href="/tryouts" class="btn-primary drawer-cta">Request a Tryout</a>
+</div>
+
+<!-- Drawer overlay -->
+<div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+
+<style>
+  /* ---- Sticky header ---- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: #0B1B3B;
+    border-bottom: 1px solid var(--color-divider-d);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 18px;
+  }
+
+  /* ---- Brand / logo ---- */
+  .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .monogram {
+    height: 72px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* ---- Desktop nav links ---- */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(250, 250, 247, 0.72);
+    transition: color var(--duration-base) var(--ease-brand);
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-offwhite);
+  }
+
+  /* Active page — 1px gold underline */
+  .nav-link.active {
+    color: var(--color-offwhite);
+    border-bottom-color: var(--color-gold);
+  }
+
+  /* ---- Header actions ---- */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ---- Primary CTA button ---- */
+  .btn-primary {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-offwhite);
+    background-color: var(--color-navy);
+    border: 1.5px solid var(--color-offwhite);
+    border-radius: 2px;
+    padding: 10px 20px;
+    display: inline-block;
+    transition:
+      background-color var(--duration-base) var(--ease-brand),
+      border-color var(--duration-base) var(--ease-brand),
+      color var(--duration-base) var(--ease-brand);
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .btn-primary:active {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* ---- Hamburger ---- */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 1.5px;
+    background: var(--color-offwhite);
+    border-radius: 999px;
+    transition: transform var(--duration-base) var(--ease-brand), opacity var(--duration-base) var(--ease-brand);
+  }
+
+  /* Hamburger → X animation */
+  .hamburger[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .hamburger[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* ---- Mobile drawer ---- */
+  .mobile-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: 49;
+    width: min(320px, 85vw);
+    background-color: var(--color-navy);
+    border-left: 1px solid var(--color-divider-d);
+    padding: 100px 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transform: translateX(100%);
+    transition: transform var(--duration-slow) var(--ease-brand);
+    overflow-y: auto;
+  }
+
+  .mobile-drawer[aria-hidden='false'] {
+    transform: translateX(0);
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .drawer-link {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(250, 250, 247, 0.78);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-divider-d);
+    transition: color var(--duration-base) var(--ease-brand);
+  }
+
+  .drawer-link:hover,
+  .drawer-link.active {
+    color: var(--color-offwhite);
+  }
+
+  .drawer-cta {
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  /* ---- Overlay ---- */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 48;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-slow) var(--ease-brand);
+  }
+
+  .drawer-overlay[aria-hidden='false'] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 900px) {
+    .desktop-nav,
+    .cta-desktop,
+    .hamburger {
+      display: none;
+    }
+
+    /* Pull logo flush with the left edge on mobile */
+    .header-inner {
+      padding-inline-start: 4px;
+    }
+
+    .brand {
+      cursor: pointer;
+    }
+
+    .monogram {
+      transition: opacity var(--duration-base) var(--ease-brand);
+    }
+
+    .monogram:active {
+      opacity: 0.7;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle') as HTMLButtonElement;
+  const drawer = document.getElementById('mobile-drawer') as HTMLElement;
+  const overlay = document.getElementById('drawer-overlay') as HTMLElement;
+  const brand = document.querySelector<HTMLAnchorElement>('.brand');
+
+  function openDrawer() {
+    toggle.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const firstLink = drawer.querySelector<HTMLElement>('a, button');
+    firstLink?.focus();
+  }
+
+  function closeDrawer() {
+    toggle.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    toggle.focus();
+  }
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeDrawer() : openDrawer();
+  });
+
+  overlay.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      closeDrawer();
+    }
+  });
+
+  // Close drawer on nav link click (SPA-style navigation)
+  drawer.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Logo opens/closes drawer on mobile
+  brand?.addEventListener('click', (e) => {
+    if (window.innerWidth <= 900) {
+      e.preventDefault();
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeDrawer() : openDrawer();
+    }
+  });
+
+  // Focus trap inside drawer
+  drawer.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(
+      drawer.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+</script>

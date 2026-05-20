@@ -1,0 +1,430 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Button from '../components/ui/Button.astro';
+import PullQuote from '../components/ui/PullQuote.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import PillarsAccordion from '../components/sections/PillarsAccordion';
+
+const pillars = [
+  {
+    num: '01',
+    title: 'Faith',
+    teaser: 'The foundation is character, not strategy.',
+    body: 'We play under the belief that effort, respect, and humility matter more than any single game. Faith shapes the culture here — it shows up in how we coach, how we treat opponents, and how we respond when things go sideways.',
+  },
+  {
+    num: '02',
+    title: 'Discipline',
+    teaser: 'Mastery comes from the reps no one watches.',
+    body: "Footwork, mechanics, the mental reads in the dugout — these are the job. Shortcuts don't survive a long season. We coach fundamentals because fundamentals are what hold up in October.",
+  },
+  {
+    num: '03',
+    title: 'Accountability',
+    teaser: 'Own the error. Make the adjustment.',
+    body: "We don't hide mistakes — we use them. Accountability to the team means doing your job on every pitch, from the first inning to the last, regardless of the score.",
+  },
+  {
+    num: '04',
+    title: 'Confidence',
+    teaser: 'Earned in practice. Expressed on the field.',
+    body: "We build players who trust themselves in pressure moments — because they've been there before, and they know what to do. Confidence isn't attitude. It's preparation.",
+  },
+  {
+    num: '05',
+    title: 'Hard Work',
+    teaser: 'The work between the lines decides the outcome.',
+    body: 'The players who improve most are the ones who show up ready to be coached, take the feedback, and come back the next day with the same focus. No shortcuts. No exceptions.',
+  },
+] as const;
+
+const coaches = [
+  {
+    name: 'Manny Guzman',
+    title: 'HEAD COACH · 11U/12U',
+    bio: "Coach Manny has been developing youth baseball players in the Central Valley for over a decade. His approach is direct — teach the game right, hold a high standard, and let the work speak. He builds relationships with players and families that extend well beyond the season.",
+    imageSrc: '/images/player-placeholder.svg',
+    imageAlt: 'Headshot — Coach Manny Guzman',
+  },
+  {
+    name: 'Angel Montano',
+    title: 'HEAD COACH · 10U',
+    bio: "Coach Angel brings a patient, technical approach to the 10U program. He focuses on building a correct foundation early — mechanics, decision-making, and the mental side of the game. His players learn to compete hard without losing the love of the sport.",
+    imageSrc: '/images/player-placeholder.svg',
+    imageAlt: 'Headshot — Coach Angel Montano',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="About — Bakersfield Dirt Dawgs"
+  description="Learn about the Bakersfield Dirt Dawgs program — our mission, coaching staff, program values, and the faith that shapes how we play."
+  canonicalPath="/about"
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       01 · PAGE HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <section class="about-header">
+    <div class="container">
+      <SectionHeader eyebrow="About the Program" heading="Built in the Dirt." />
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       02 · MISSION PULL-QUOTE
+  ════════════════════════════════════════════════════════════ -->
+  <section class="mission-section section-cream">
+    <div class="container">
+      <Eyebrow num="02">Our Mission</Eyebrow>
+      <div class="mission-quote reveal">
+        <PullQuote>
+          We're a development program first. We coach the fundamentals — the ground game, the long season, the work between innings. The kids learn the game by doing it. Character comes the same way.
+        </PullQuote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       03 · FIVE PILLARS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="pillars-section">
+    <div class="container">
+      <Eyebrow num="03">Our Pillars</Eyebrow>
+      <div class="pillars-wrap reveal">
+        <PillarsAccordion client:load pillars={pillars} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       04 · COACH BIOS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="coaches-section section-cream">
+    <div class="container">
+      <Eyebrow num="04">Coaches</Eyebrow>
+      <div class="coaches-grid reveal">
+        {coaches.map((coach) => (
+          <div class="coach-card">
+            <img
+              src={coach.imageSrc}
+              alt={coach.imageAlt}
+              class="coach-photo"
+              width="200"
+              height="200"
+            />
+            <p class="coach-title">{coach.title}</p>
+            <h2 class="coach-name">{coach.name}</h2>
+            <p class="coach-bio">{coach.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       05 · BIGGER THAN THE GAME
+  ════════════════════════════════════════════════════════════ -->
+  <section class="faith-section">
+    <div class="container">
+      <Eyebrow num="05">Bigger Than the Game</Eyebrow>
+      <div class="faith-grid reveal">
+        <div class="faith-left">
+          <h2 class="faith-heading">Faith, woven in — never preached.</h2>
+          <p class="faith-body">
+            The Dirt Dawgs don't wear faith on a banner or announce it before games. It shapes how we coach, how we treat opponents, and how we respond when things don't go our way. That's where it counts.
+          </p>
+        </div>
+        <div class="faith-right">
+          <PullQuote attribution="— Colossians 3:23">
+            Whatever you do, work at it with all your heart.
+          </PullQuote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       06 · CTA BAND
+  ════════════════════════════════════════════════════════════ -->
+  <section class="cta-band bg-dark">
+    <div class="container cta-inner reveal">
+      <p class="cta-eyebrow">Join the Program</p>
+      <h2 class="cta-heading">Ready to be a Dirt Dawg?</h2>
+      <Button href="/tryouts" variant="primary">Request a Tryout</Button>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Shared ─────────────────────────────────────────── */
+  .section-cream {
+    background-color: var(--color-cream);
+  }
+
+  /* ── 01 · Header ────────────────────────────────────── */
+  .about-header {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  /* ── 02 · Mission ───────────────────────────────────── */
+  .mission-section {
+    padding-block: var(--section-py);
+  }
+
+  .mission-quote {
+    margin-top: 48px;
+    max-width: 860px;
+  }
+
+  /* ── 03 · Pillars ───────────────────────────────────── */
+  .pillars-section {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .pillars-wrap {
+    margin-top: 48px;
+  }
+
+  /* Pillar island :global styles */
+  :global(.pillars-grid) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+  }
+
+  :global(.pillar) {
+    padding: 28px 24px 32px;
+    border-top: 2px solid var(--color-divider);
+    transition: border-color var(--duration-base) var(--ease-brand);
+  }
+
+  :global(.pillar--open) {
+    border-top-color: var(--color-gold);
+  }
+
+  :global(.pillar-trigger) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  :global(.pillar-num) {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+  }
+
+  :global(.pillar-title) {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.2;
+  }
+
+  :global(.pillar-indicator) {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-top: 4px;
+    transition: transform var(--duration-base) var(--ease-brand);
+  }
+
+  :global(.pillar-teaser) {
+    font-size: 14px;
+    color: var(--color-ink-2);
+    line-height: 1.55;
+    margin: 10px 0 0;
+  }
+
+  :global(.pillar-panel) {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  :global(.pillar--open .pillar-panel) {
+    grid-template-rows: 1fr;
+  }
+
+  :global(.pillar-panel-inner) {
+    overflow: hidden;
+  }
+
+  :global(.pillar-body) {
+    font-size: 14px;
+    color: var(--color-ink-2);
+    line-height: 1.7;
+    margin: 12px 0 0;
+    padding-bottom: 4px;
+  }
+
+  /* ── 04 · Coaches ───────────────────────────────────── */
+  .coaches-section {
+    padding-block: var(--section-py);
+  }
+
+  .coaches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .coach-card {
+    background: var(--color-offwhite);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .coach-photo {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .coach-title {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 0 0 8px;
+  }
+
+  .coach-name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 14px;
+    line-height: 1.2;
+  }
+
+  .coach-bio {
+    font-size: 15px;
+    color: var(--color-ink-2);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── 05 · Faith ─────────────────────────────────────── */
+  .faith-section {
+    padding-block: var(--section-py);
+    border-top: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .faith-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .faith-heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.25;
+    margin: 0 0 20px;
+  }
+
+  .faith-body {
+    font-size: 16px;
+    color: var(--color-ink-2);
+    line-height: 1.75;
+    margin: 0;
+    max-width: 48ch;
+  }
+
+  /* ── 06 · CTA Band ──────────────────────────────────── */
+  .cta-band {
+    padding-block: var(--section-py);
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .cta-eyebrow {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0;
+  }
+
+  .cta-heading {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--color-offwhite);
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* ── Responsive ─────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    :global(.pillars-grid) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .coaches-grid,
+    .faith-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faith-grid {
+      gap: 40px;
+    }
+
+    :global(.pillars-grid) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 540px) {
+    :global(.pillars-grid) {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-card {
+      padding: 24px 20px;
+    }
+  }
+</style>

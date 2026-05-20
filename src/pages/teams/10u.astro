@@ -1,0 +1,458 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import Button from '../../components/ui/Button.astro';
+
+const stats = [
+  { value: '2023', label: 'Founded' },
+  { value: 'USSSA', label: 'Circuit' },
+  { value: '19–8', label: '2025 Season' },
+  { value: '11', label: 'Players' },
+] as const;
+
+const roster = [
+  { num: '#02', name: 'E. Torres',   pos: 'Pitcher'     },
+  { num: '#08', name: 'M. Rivera',   pos: 'Catcher'     },
+  { num: '#17', name: 'A. Herrera',  pos: 'Shortstop'   },
+  { num: '#05', name: 'J. Morales',  pos: '1st Base'    },
+  { num: '#13', name: 'D. Chavez',   pos: '2nd Base'    },
+  { num: '#20', name: 'R. Gutierrez',pos: '3rd Base'    },
+  { num: '#01', name: 'C. Perez',    pos: 'Left Field'  },
+  { num: '#16', name: 'F. Sandoval', pos: 'Center'      },
+  { num: '#10', name: 'O. Jimenez',  pos: 'Right Field' },
+  { num: '#23', name: 'L. Fuentes',  pos: 'Pitcher'     },
+  { num: '#19', name: 'P. Vargas',   pos: 'Utility'     },
+] as const;
+
+const highlights = [
+  { month: 'Apr 2025', title: 'Kern County Spring Showcase', result: 'Champions — undefeated at 4–0. Set the tone early in the season with sharp defense and timely hitting.' },
+  { month: 'Jun 2025', title: 'Valley Open',                  result: 'Runner-up — lost the final in extra innings. One of the better games this group has played.' },
+  { month: 'Sep 2025', title: 'End-of-Summer Invitational',   result: '3rd place — great competition level. The pitching staff handled a tough bracket all weekend.' },
+] as const;
+---
+
+<BaseLayout
+  title="10U Team — Bakersfield Dirt Dawgs"
+  description="Bakersfield Dirt Dawgs 10U roster, coaching staff, and 2025 season highlights. USSSA travel ball, Bakersfield CA."
+  canonicalPath="/teams/10u"
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       01 · HERO BAND
+  ════════════════════════════════════════════════════════════ -->
+  <section class="team-hero" aria-label="Dirt Dawgs 10U">
+    <div
+      class="team-hero-photo"
+      role="img"
+      aria-label="Dirt Dawgs 10U team photo"
+      style="background-image: url('/images/hero-placeholder.svg');"
+    ></div>
+    <div class="team-hero-overlay" aria-hidden="true"></div>
+    <div class="team-hero-content">
+      <p class="team-hero-label">10U · USSSA · Bakersfield, CA</p>
+      <h1 class="team-hero-name">Dirt Dawgs 10U</h1>
+      <p class="team-hero-coach">Head Coach — Angel Montano</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       02 · STATS ROW
+  ════════════════════════════════════════════════════════════ -->
+  <section class="stats-section">
+    <div class="container">
+      <Eyebrow num="02">At a Glance</Eyebrow>
+      <div class="stats-grid reveal">
+        {stats.map((s) => (
+          <div class="stat-item">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       03 · COACH CARD
+  ════════════════════════════════════════════════════════════ -->
+  <section class="coach-section section-cream">
+    <div class="container">
+      <Eyebrow num="03">Head Coach</Eyebrow>
+      <div class="coach-layout reveal">
+        <div class="coach-photo-wrap">
+          <img
+            src="/images/player-placeholder.svg"
+            alt="Headshot — Coach Angel Montano"
+            class="coach-photo"
+            width="240"
+            height="240"
+          />
+        </div>
+        <div class="coach-bio-wrap">
+          <h2 class="coach-name">Angel Montano</h2>
+          <p class="coach-role">Head Coach · 10U</p>
+          <hr class="coach-divider" />
+          <p class="coach-bio">
+            Coach Angel brings a patient, technical approach to the 10U program. His priority is building the correct foundation early — before habits calcify and before bad mechanics become hard to break. At this level, the mechanical work matters as much as the wins.
+          </p>
+          <p class="coach-bio">
+            He focuses on pitching mechanics, approach at the plate, and defensive positioning. His players learn to compete hard without losing the joy of the game — a balance that pays dividends at every age group above.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       04 · ROSTER
+  ════════════════════════════════════════════════════════════ -->
+  <section class="roster-section">
+    <div class="container">
+      <Eyebrow num="04">Roster</Eyebrow>
+      <div class="roster-grid reveal">
+        {roster.map((player) => (
+          <div class="roster-card">
+            <img
+              src="/images/player-placeholder.svg"
+              alt={`Player photo — ${player.name}`}
+              class="roster-photo"
+              width="120"
+              height="120"
+            />
+            <span class="roster-num">{player.num}</span>
+            <span class="roster-name">{player.name}</span>
+            <span class="roster-pos">{player.pos}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       05 · SEASON HIGHLIGHTS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="highlights-section section-cream">
+    <div class="container">
+      <Eyebrow num="05">Season Highlights</Eyebrow>
+      <div class="highlights-grid reveal">
+        {highlights.map((h) => (
+          <div class="highlight-item">
+            <img
+              src="/images/hero-placeholder.svg"
+              alt={h.title}
+              class="highlight-photo"
+            />
+            <p class="highlight-month">{h.month}</p>
+            <h3 class="highlight-title">{h.title}</h3>
+            <p class="highlight-result">{h.result}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       06 · CTA BAND
+  ════════════════════════════════════════════════════════════ -->
+  <section class="cta-band bg-dark">
+    <div class="container cta-inner">
+      <p class="cta-eyebrow">Join the Team</p>
+      <h2 class="cta-heading">Want a spot on the bench?</h2>
+      <Button href="/tryouts" variant="primary">Request a Tryout</Button>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .section-cream { background-color: var(--color-cream); }
+
+  .team-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .team-hero-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .team-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.62) 100%);
+  }
+
+  .team-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 48px var(--gutter);
+    max-width: var(--container);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .team-hero-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 250, 247, 0.72);
+    margin: 0 0 10px;
+  }
+
+  .team-hero-name {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    color: var(--color-offwhite);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-tight);
+    margin: 0 0 8px;
+  }
+
+  .team-hero-coach {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(250, 250, 247, 0.85);
+    margin: 0;
+  }
+
+  .stats-section {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stat-value {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .stat-label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  .coach-section {
+    padding-block: var(--section-py);
+  }
+
+  .coach-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 40px;
+  }
+
+  .coach-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .coach-name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(26px, 2.4vw, 36px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 6px;
+    line-height: 1.2;
+  }
+
+  .coach-role {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 0;
+  }
+
+  .coach-divider {
+    border: 0;
+    height: 1px;
+    background: var(--color-divider);
+    margin: 20px 0;
+  }
+
+  .coach-bio {
+    font-size: 15px;
+    color: var(--color-ink-2);
+    line-height: 1.75;
+    margin: 0 0 12px;
+    max-width: 64ch;
+  }
+
+  .roster-section {
+    padding-block: var(--section-py);
+  }
+
+  .roster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .roster-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .roster-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+  }
+
+  .roster-num {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: var(--color-gold);
+  }
+
+  .roster-name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.2;
+  }
+
+  .roster-pos {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  .highlights-section {
+    padding-block: var(--section-py);
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .highlight-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .highlight-month {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 16px 0 4px;
+  }
+
+  .highlight-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+
+  .highlight-result {
+    font-size: 14px;
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .cta-band {
+    padding-block: var(--section-py);
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .cta-eyebrow {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0;
+  }
+
+  .cta-heading {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--color-offwhite);
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  @media (max-width: 1024px) {
+    .roster-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .coach-layout { grid-template-columns: 1fr; }
+    .coach-photo-wrap { max-width: 160px; }
+    .roster-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+  }
+</style>

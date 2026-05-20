@@ -1,0 +1,140 @@
+---
+/**
+ * Button — primary / secondary / link variants.
+ * Renders as <a> when href is provided, otherwise <button>.
+ *
+ * variant:
+ *   "primary"   — filled navy, off-white text
+ *   "secondary" — off-white fill, navy border + text
+ *   "link"      — Oswald ALL CAPS with 1px underline
+ *
+ * dark: true when sitting on a navy/dark background (adjusts secondary + link)
+ */
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'link';
+  dark?: boolean;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  variant = 'primary',
+  dark = false,
+  class: className,
+  type = 'button',
+  disabled,
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+{href ? (
+  <a
+    href={href}
+    class:list={['btn', `btn--${variant}`, { 'btn--dark': dark }, className]}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    class:list={['btn', `btn--${variant}`, { 'btn--dark': dark }, className]}
+    disabled={disabled}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}
+
+<style>
+  .btn {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 2px;
+    padding: 14px 28px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition:
+      background-color var(--duration-base) var(--ease-brand),
+      border-color var(--duration-base) var(--ease-brand),
+      color var(--duration-base) var(--ease-brand),
+      opacity var(--duration-base) var(--ease-brand);
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* --- Primary --- */
+  .btn--primary {
+    background-color: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-offwhite);
+  }
+
+  .btn--primary:hover:not(:disabled) {
+    background-color: var(--color-navy-90);
+    border-color: var(--color-navy-90);
+  }
+
+  .btn--primary:active:not(:disabled) {
+    background-color: var(--color-navy-80);
+    border-color: var(--color-navy-80);
+  }
+
+  /* --- Secondary --- */
+  .btn--secondary {
+    background-color: var(--color-offwhite);
+    border-color: var(--color-navy);
+    color: var(--color-navy);
+  }
+
+  .btn--secondary:hover:not(:disabled) {
+    background-color: var(--color-cream);
+  }
+
+  .btn--secondary.btn--dark {
+    background-color: transparent;
+    border-color: var(--color-offwhite);
+    color: var(--color-offwhite);
+  }
+
+  .btn--secondary.btn--dark:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  /* --- Link / tertiary --- */
+  .btn--link {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    padding: 0 0 2px;
+    border-bottom: 1px solid var(--color-navy);
+    color: var(--color-navy);
+  }
+
+  .btn--link:hover:not(:disabled) {
+    opacity: 0.65;
+  }
+
+  .btn--link.btn--dark {
+    color: var(--color-offwhite);
+    border-bottom-color: var(--color-offwhite);
+  }
+</style>

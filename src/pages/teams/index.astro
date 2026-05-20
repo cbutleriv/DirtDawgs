@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import Button from '../../components/ui/Button.astro';
+import Pill from '../../components/ui/Pill.astro';
+
+const teams = [
+  {
+    id: '11u',
+    ageLabel: '11U / 12U · USSSA · BAKERSFIELD',
+    badge: 'Rising to 12U',
+    coachName: 'Manny Guzman',
+    blurb:
+      'A program built on fundamentals and high expectations. The 11U squad competes on the USSSA circuit with a focus on development, discipline, and the long game.',
+    href: '/teams/11u',
+    imageSrc: '/images/hero-placeholder.svg',
+    imageAlt: 'Dirt Dawgs 11U team photo',
+  },
+  {
+    id: '10u',
+    ageLabel: '10U · USSSA · BAKERSFIELD',
+    badge: 'Tryouts Open',
+    coachName: 'Angel Montano',
+    blurb:
+      "The 10U program lays the foundation. Coach Angel's emphasis on mechanics and decision-making prepares players for the physical and mental demands of the next level.",
+    href: '/teams/10u',
+    imageSrc: '/images/hero-placeholder.svg',
+    imageAlt: 'Dirt Dawgs 10U team photo',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Teams — Bakersfield Dirt Dawgs"
+  description="The Bakersfield Dirt Dawgs field two USSSA travel ball teams — 10U and 11U/12U. One standard across both rosters."
+  canonicalPath="/teams"
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       01 · PAGE HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <section class="teams-header">
+    <div class="container">
+      <p class="teams-eyebrow">Our Teams</p>
+      <h1 class="teams-h1">Two Teams. One Standard.</h1>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       02 · TEAM CARDS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="teams-grid-section">
+    <div class="container">
+      <Eyebrow num="02">Rosters</Eyebrow>
+      <div class="teams-grid reveal">
+        {teams.map((team) => (
+          <div class="team-card">
+            <div class="team-photo-wrap">
+              <img
+                src={team.imageSrc}
+                alt={team.imageAlt}
+                class="team-photo"
+              />
+              <div class="team-badge-wrap">
+                <Pill variant="outline">{team.badge}</Pill>
+              </div>
+            </div>
+            <div class="team-card-body">
+              <p class="team-label">{team.ageLabel}</p>
+              <h2 class="team-coach">{team.coachName}</h2>
+              <p class="team-blurb">{team.blurb}</p>
+              <Button href={team.href} variant="primary">View Roster</Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       03 · PROGRAM STANDARDS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="standards-section section-cream">
+    <div class="container standards-inner">
+      <Eyebrow num="03">Program Standards</Eyebrow>
+      <p class="standards-quote">
+        Same playbook. Same standard. Whether a kid is 10U or 12U, the program runs on fundamentals, accountability, and the work between innings.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .section-cream {
+    background-color: var(--color-cream);
+  }
+
+  /* ── 01 · Header ─────────────────────────────────────── */
+  .teams-header {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .teams-eyebrow {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 16px;
+  }
+
+  .teams-h1 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    color: var(--color-navy);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ── 02 · Team cards ─────────────────────────────────── */
+  .teams-grid-section {
+    padding-block: var(--section-py);
+  }
+
+  .teams-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-photo-wrap {
+    position: relative;
+  }
+
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .team-badge-wrap {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+
+  .team-card-body {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .team-label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 0;
+  }
+
+  .team-coach {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .team-blurb {
+    font-size: 15px;
+    color: var(--color-ink-2);
+    line-height: 1.7;
+    margin: 4px 0 8px;
+    max-width: 52ch;
+  }
+
+  /* ── 03 · Standards ──────────────────────────────────── */
+  .standards-section {
+    padding-block: var(--section-py);
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .standards-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .standards-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 26px);
+    line-height: 1.45;
+    color: var(--color-navy);
+    margin: 0;
+    max-width: 720px;
+  }
+
+  /* ── Responsive ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .teams-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+</style>

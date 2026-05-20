@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dirt Dawgs — Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="wireframes.css" />
+</head>
+<body>
+
+<aside class="sidebar">
+  <h1>Dirt Dawgs</h1>
+  <div class="sub">Wireframes · v1</div>
+
+  <div class="label">PAGES</div>
+  <ul class="tabs">
+    <li><button class="active" data-target="home"><span class="num">01</span>Home</button></li>
+    <li><button data-target="about"><span class="num">02</span>About</button></li>
+    <li><button data-target="teams"><span class="num">03</span>Teams</button></li>
+    <li><button data-target="team-detail"><span class="num">04</span>Team Detail (11U)</button></li>
+    <li><button data-target="schedule"><span class="num">05</span>Schedule</button></li>
+    <li><button data-target="gallery"><span class="num">06</span>Gallery</button></li>
+    <li><button data-target="sponsors"><span class="num">07</span>Sponsors</button></li>
+    <li><button data-target="tryouts"><span class="num">08</span>Tryouts</button></li>
+    <li><button data-target="contact"><span class="num">09</span>Contact</button></li>
+  </ul>
+
+  <div class="legend">
+    <div class="row"><span class="swatch img"></span> Image placeholder</div>
+    <div class="row"><span class="swatch btn"></span> Primary CTA</div>
+    <div class="row"><span class="swatch note"></span> Annotation</div>
+    <div style="margin-top:14px;font-style:italic;line-height:1.4;">Grayscale, structural only. No brand colors applied yet.</div>
+  </div>
+</aside>
+
+<main>
+
+<!-- =========================================================
+     01. HOME — desktop + mobile
+     ========================================================= -->
+<section class="page active" id="home">
+  <div class="page-head">
+    <div class="l">
+      <span class="eyebrow">PAGE 01</span>
+      <h2>Home</h2>
+    </div>
+    <span class="meta">Desktop + Mobile</span>
+  </div>
+  <p class="page-intro">Hero is the work-horse: typography-led, B&amp;W action photo behind. Primary CTA carries through to Tryouts.</p>
+
+  <div class="dual">
+    <div>
+      <div class="frame">
+        <div class="frame-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="url">dirtdawgsbaseball.com</div>
+          <span class="size">DESKTOP · 1440</span>
+        </div>
+        <div data-slot="nav"></div>
+        <div class="frame-body">
+
+          <!-- 01 HERO -->
+          <div class="sec" style="padding:0;">
+            <div class="ph hero" style="border:0;min-height:480px;">
+              <span>[Hero Image: B&amp;W action shot — kid sliding into base, dirt spray]</span>
+            </div>
+            <div style="position:relative;margin-top:-340px;padding:48px 56px 56px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 60%);min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;">
+              <div class="num" style="color:#fff;opacity:.8;">— 01</div>
+              <h3 class="huge" style="color:#fff;margin-top:8px;">More Than a Game.</h3>
+              <p style="font-family:var(--hand);font-size:18px;max-width:520px;opacity:.9;">Built in the Dirt. Grounded in Faith.</p>
+              <div style="display:flex;gap:14px;margin-top:20px;align-items:center;">
+                <a class="btn-wf">REQUEST A TRYOUT <span class="cta-flag">PRIMARY</span></a>
+                <a class="btn-wf link" style="color:#fff;border-color:#fff;">LEARN ABOUT US →</a>
+              </div>
+            </div>
+            <div class="note float tr" style="right:-180px;top:80px;">↙ Full-bleed B&amp;W photo<br/>w/ navy overlay</div>
+          </div>
+
+          <!-- 02 MISSION EXCERPT -->
+          <div class="sec shade">
+            <div class="num">— 02</div>
+            <div class="label">OUR MISSION</div>
+            <h3 class="big" style="max-width:900px;">"We're a development program first. Wins follow the work."</h3>
+            <div style="margin-top:18px;"><a class="btn-wf link">READ FULL MISSION</a></div>
+          </div>
+
+          <!-- 03 TWO TEAM SHOWCASE -->
+          <div class="sec">
+            <div class="eyerow"><span>03 · OUR TEAMS</span><span class="bar"></span><span>TWO TEAMS · ONE STANDARD</span></div>
+            <div class="cols-2" style="gap:24px;">
+              <div>
+                <div class="ph tall"><span>[Team photo — 11U group, dugout]</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;">
+                  <div>
+                    <div style="font-size:11px;letter-spacing:.16em;color:var(--pencil);">11U / 12U</div>
+                    <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:4px 0;">Coach Manny Guzman</h4>
+                  </div>
+                  <a class="btn-wf link">VIEW TEAM →</a>
+                </div>
+              </div>
+              <div>
+                <div class="ph tall"><span>[Team photo — 10U practice]</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;">
+                  <div>
+                    <div style="font-size:11px;letter-spacing:.16em;color:var(--pencil);">10U</div>
+                    <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:4px 0;">Coach Angel Montano</h4>
+                  </div>
+                  <a class="btn-wf link">VIEW TEAM →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 FAITH BAND -->
+          <div class="sec dark center" style="padding:48px 32px;">
+            <div class="num">— 04</div>
+            <p style="font-family:serif;font-style:italic;font-size:24px;max-width:680px;margin:8px auto 0;">"Whatever you do, work at it with all your heart."</p>
+            <div style="font-size:10px;letter-spacing:.16em;opacity:.7;margin-top:10px;">COLOSSIANS 3:23</div>
+          </div>
+
+          <!-- 05 RECENT GALLERY -->
+          <div class="sec">
+            <div class="eyerow"><span>05 · RECENT</span><span class="bar"></span><a class="btn-wf link" style="border:none;">VIEW GALLERY →</a></div>
+            <div class="cols-4">
+              <div class="ph" style="aspect-ratio:1/1;"><span>[Img 1]</span></div>
+              <div class="ph" style="aspect-ratio:1/1;"><span>[Img 2]</span></div>
+              <div class="ph" style="aspect-ratio:1/1;"><span>[Img 3]</span></div>
+              <div class="ph" style="aspect-ratio:1/1;"><span>[Img 4]</span></div>
+            </div>
+          </div>
+
+          <!-- 06 SPONSORS STRIP -->
+          <div class="sec shade">
+            <div class="eyerow"><span>06 · PARTNERS IN THE PROGRAM</span><span class="bar"></span><a class="btn-wf link" style="border:none;">SEE ALL SPONSORS →</a></div>
+            <div class="cols-5">
+              <div class="logo-box"><span>LOGO</span></div>
+              <div class="logo-box"><span>LOGO</span></div>
+              <div class="logo-box"><span>LOGO</span></div>
+              <div class="logo-box"><span>LOGO</span></div>
+              <div class="logo-box"><span>LOGO</span></div>
+            </div>
+          </div>
+
+          <div data-slot="footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE HOME -->
+    <div>
+      <div class="mobile-frame">
+        <div class="notch"></div>
+        <div class="screen">
+          <div data-slot="nav-mobile"></div>
+
+          <div class="ph" style="aspect-ratio:9/12;border:0;min-height:0;"><span>[Hero photo<br/>B&amp;W]</span></div>
+          <div class="sec" style="margin-top:-110px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.5));color:#fff;position:relative;">
+            <div class="num" style="color:#fff;opacity:.8;">— 01</div>
+            <h3 class="big" style="color:#fff;font-size:32px;">More Than a Game.</h3>
+            <p style="font-family:var(--hand);font-size:13px;opacity:.9;">Built in the Dirt.<br/>Grounded in Faith.</p>
+            <a class="btn-wf" style="background:#fff;color:var(--ink);border-color:#fff;display:block;text-align:center;margin-top:14px;">REQUEST A TRYOUT</a>
+            <a class="btn-wf link" style="color:#fff;border-color:#fff;display:block;text-align:center;margin-top:12px;">LEARN ABOUT US →</a>
+          </div>
+
+          <div class="sec shade">
+            <div class="num">— 02</div>
+            <h3 style="font-size:20px;">"Development first. Wins follow the work."</h3>
+            <a class="btn-wf link" style="display:inline-block;margin-top:8px;">READ MISSION</a>
+          </div>
+
+          <div class="sec">
+            <div class="num">— 03</div>
+            <div class="label">OUR TEAMS</div>
+            <div class="ph" style="aspect-ratio:5/3;margin-bottom:8px;"><span>11U/12U</span></div>
+            <div style="font-size:10px;letter-spacing:.14em;color:var(--pencil);">11U · COACH GUZMAN</div>
+            <a class="btn-wf link" style="font-size:10px;">VIEW TEAM →</a>
+            <div class="ph" style="aspect-ratio:5/3;margin:14px 0 8px;"><span>10U</span></div>
+            <div style="font-size:10px;letter-spacing:.14em;color:var(--pencil);">10U · COACH MONTANO</div>
+            <a class="btn-wf link" style="font-size:10px;">VIEW TEAM →</a>
+          </div>
+
+          <div class="sec dark center" style="padding:24px 14px;">
+            <p style="font-family:serif;font-style:italic;font-size:14px;margin:0;">"Whatever you do, work at it with all your heart."</p>
+            <div style="font-size:9px;letter-spacing:.16em;opacity:.7;margin-top:6px;">COL. 3:23</div>
+          </div>
+
+          <div class="sec">
+            <div class="num">— 05</div>
+            <div class="label">RECENT</div>
+            <div class="cols-2" style="gap:6px;">
+              <div class="ph" style="aspect-ratio:1/1;"><span>1</span></div>
+              <div class="ph" style="aspect-ratio:1/1;"><span>2</span></div>
+              <div class="ph" style="aspect-ratio:1/1;"><span>3</span></div>
+              <div class="ph" style="aspect-ratio:1/1;"><span>4</span></div>
+            </div>
+            <a class="btn-wf link" style="display:inline-block;margin-top:10px;font-size:10px;">VIEW GALLERY →</a>
+          </div>
+
+          <div class="sec shade">
+            <div class="num">— 06</div>
+            <div class="label">SPONSORS</div>
+            <div class="cols-3" style="gap:6px;">
+              <div class="logo-box"><span>•</span></div>
+              <div class="logo-box"><span>•</span></div>
+              <div class="logo-box"><span>•</span></div>
+            </div>
+          </div>
+
+          <div data-slot="footer-mobile"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     ABOUT
+     ========================================================= -->
+<section class="page" id="about">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 02</span><h2>About</h2></div>
+    <span class="meta">Desktop</span>
+  </div>
+  <p class="page-intro">Editorial pull-quote-led layout. Five pillars are the spine of the page; coach bios sit below.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/about</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <!-- 01 HEADER -->
+    <div class="sec" style="padding:80px 56px 40px;">
+      <div class="label">ABOUT THE PROGRAM</div>
+      <h3 class="huge">Built in the Dirt.</h3>
+    </div>
+
+    <!-- 02 MISSION -->
+    <div class="sec shade" style="padding:64px 56px;">
+      <div class="num">— 02</div>
+      <p style="font-family:serif;font-style:italic;font-size:34px;line-height:1.15;max-width:900px;border-left:3px solid var(--marker);padding-left:24px;">
+        "We're a development program first. We coach the fundamentals — the ground game, the long season, the work between innings. The kids learn the game by doing it. Character comes the same way."
+      </p>
+    </div>
+
+    <!-- 03 FIVE PILLARS -->
+    <div class="sec">
+      <div class="eyerow"><span>03 · OUR PILLARS</span><span class="bar"></span></div>
+      <div class="cols-5" style="gap:24px;">
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">01</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0 8px;">Faith</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">02</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0 8px;">Discipline</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">03</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0 8px;">Accountability</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">04</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0 8px;">Confidence</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">05</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0 8px;">Hard Work</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 COACH BIOS -->
+    <div class="sec shade">
+      <div class="eyerow"><span>04 · COACHES</span><span class="bar"></span></div>
+      <div class="cols-2" style="gap:32px;">
+        <div class="card" style="padding:24px;">
+          <div class="ph headshot" style="margin-bottom:14px;"><span>[Headshot — Manny]</span></div>
+          <div class="label">HEAD COACH · 11U/12U</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:26px;margin:6px 0 10px;">Manny Guzman</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div><div class="txt l" style="margin-top:6px;"></div>
+        </div>
+        <div class="card" style="padding:24px;">
+          <div class="ph headshot" style="margin-bottom:14px;"><span>[Headshot — Angel]</span></div>
+          <div class="label">HEAD COACH · 10U</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:26px;margin:6px 0 10px;">Angel Montano</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div><div class="txt l" style="margin-top:6px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 BIGGER THAN GAME -->
+    <div class="sec">
+      <div class="num">— 05</div>
+      <div class="label">BIGGER THAN THE GAME</div>
+      <div class="cols-2" style="gap:48px;align-items:start;">
+        <div>
+          <h3 style="font-family:serif;font-style:italic;font-size:30px;">Faith, woven in — never preached.</h3>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div style="font-family:serif;font-style:italic;font-size:20px;border-left:2px solid var(--marker);padding:8px 0 8px 18px;">
+          "Whatever you do, work at it with all your heart."<br/>
+          <span style="font-family:var(--sans);font-style:normal;font-size:10px;letter-spacing:.16em;color:var(--pencil);">— COLOSSIANS 3:23</span>
+        </div>
+      </div>
+      <div class="callout">Single scripture mention on the page. No banners, no badges.</div>
+    </div>
+
+    <!-- 06 CTA BAND -->
+    <div class="sec dark center" style="padding:64px 32px;">
+      <div class="num">— 06</div>
+      <h3 class="big" style="color:#fff;">Ready to be a Dirt Dawg?</h3>
+      <a class="btn-wf" style="margin-top:18px;">REQUEST A TRYOUT <span class="cta-flag">PRIMARY</span></a>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     TEAMS LANDING
+     ========================================================= -->
+<section class="page" id="teams">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 03</span><h2>Teams (Landing)</h2></div>
+    <span class="meta">Desktop</span>
+  </div>
+  <p class="page-intro">Two teams, equal weight. Status badges call attention to roster movement.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/teams</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <div class="sec" style="padding:80px 56px 40px;">
+      <div class="label">OUR TEAMS</div>
+      <h3 class="huge">Two Teams. One Standard.</h3>
+    </div>
+
+    <div class="sec">
+      <div class="num">— 02</div>
+      <div class="cols-2" style="gap:32px;">
+        <div>
+          <div style="position:relative;">
+            <div class="ph huge"><span>[Team photo — 11U]</span></div>
+            <span class="pill dark" style="position:absolute;top:14px;left:14px;">RISING TO 12U</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;">
+            <div>
+              <div class="label">11U · USSSA · BAKERSFIELD</div>
+              <h4 style="font-family:serif;font-style:italic;font-size:30px;margin:4px 0;">Coach Manny Guzman</h4>
+            </div>
+          </div>
+          <div class="txt l"></div><div class="txt m"></div>
+          <a class="btn-wf" style="margin-top:14px;">VIEW ROSTER →</a>
+        </div>
+        <div>
+          <div style="position:relative;">
+            <div class="ph huge"><span>[Team photo — 10U]</span></div>
+            <span class="pill dark" style="position:absolute;top:14px;left:14px;">TRYOUTS OPEN</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;">
+            <div>
+              <div class="label">10U · USSSA · BAKERSFIELD</div>
+              <h4 style="font-family:serif;font-style:italic;font-size:30px;margin:4px 0;">Coach Angel Montano</h4>
+            </div>
+          </div>
+          <div class="txt l"></div><div class="txt m"></div>
+          <a class="btn-wf" style="margin-top:14px;">VIEW ROSTER →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec shade center" style="padding:64px 56px;">
+      <div class="num">— 03</div>
+      <div class="label">PROGRAM STANDARDS</div>
+      <p style="font-family:serif;font-style:italic;font-size:22px;max-width:760px;margin:8px auto 0;">
+        Same playbook. Same standard. Whether a kid is 10U or 12U, the program runs on fundamentals, accountability, and the work between innings.
+      </p>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     TEAM DETAIL — 11U
+     ========================================================= -->
+<section class="page" id="team-detail">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 04</span><h2>Team Detail — 11U</h2></div>
+    <span class="meta">Desktop · Template for any team page</span>
+  </div>
+  <p class="page-intro">Heavy stat treatment up top. Roster is a quiet grid — no flashy player cards.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/teams/11u</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <!-- 01 HERO BAND -->
+    <div class="sec" style="padding:0;position:relative;">
+      <div class="ph hero" style="border:0;min-height:380px;"><span>[Team photo — 11U full roster, B&amp;W]</span></div>
+      <div style="position:relative;margin-top:-180px;padding:32px 56px 48px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.55));">
+        <div class="label" style="color:#fff;opacity:.8;">11U · USSSA · BAKERSFIELD, CA</div>
+        <h3 class="huge" style="color:#fff;margin-top:8px;">Dirt Dawgs 11U</h3>
+        <div style="font-family:var(--hand);font-size:18px;opacity:.9;margin-top:4px;">Head Coach — Manny Guzman</div>
+      </div>
+    </div>
+
+    <!-- 02 STATS ROW -->
+    <div class="sec" style="padding:48px 56px;">
+      <div class="num">— 02</div>
+      <div class="cols-4" style="gap:32px;">
+        <div>
+          <div class="stat">2022</div>
+          <div class="stat-label">FOUNDED</div>
+        </div>
+        <div>
+          <div class="stat">USSSA</div>
+          <div class="stat-label">CIRCUIT</div>
+        </div>
+        <div>
+          <div class="stat">28–9</div>
+          <div class="stat-label">2025 SEASON</div>
+        </div>
+        <div>
+          <div class="stat">12</div>
+          <div class="stat-label">PLAYERS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 COACH CARD -->
+    <div class="sec shade">
+      <div class="eyerow"><span>03 · HEAD COACH</span><span class="bar"></span></div>
+      <div class="cols-3" style="gap:32px;align-items:start;">
+        <div class="ph headshot"><span>[Headshot — Manny]</span></div>
+        <div style="grid-column:span 2;">
+          <h4 style="font-family:serif;font-style:italic;font-size:32px;margin:0;">Manny Guzman</h4>
+          <div class="label" style="margin-top:6px;">HEAD COACH · PROGRAM OWNER</div>
+          <div class="divider"></div>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt l"></div>
+          <div class="txt m" style="margin-top:8px;"></div>
+          <div class="txt l"></div><div class="txt s"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 ROSTER GRID -->
+    <div class="sec">
+      <div class="eyerow"><span>04 · ROSTER</span><span class="bar"></span><span>12 PLAYERS</span></div>
+      <div class="cols-3" style="gap:16px;">
+        <!-- generate 12 cards -->
+        <!-- row 1 -->
+        <div class="roster-card"><div class="ph"><span>P1</span></div><div class="num">#07</div><div class="nm">A. Reyes</div><div class="pos">PITCHER</div></div>
+        <div class="roster-card"><div class="ph"><span>P2</span></div><div class="num">#12</div><div class="nm">J. Castillo</div><div class="pos">CATCHER</div></div>
+        <div class="roster-card"><div class="ph"><span>P3</span></div><div class="num">#04</div><div class="nm">M. Ortiz</div><div class="pos">SHORTSTOP</div></div>
+        <div class="roster-card"><div class="ph"><span>P4</span></div><div class="num">#22</div><div class="nm">L. Vega</div><div class="pos">1ST BASE</div></div>
+        <div class="roster-card"><div class="ph"><span>P5</span></div><div class="num">#09</div><div class="nm">D. Soto</div><div class="pos">2ND BASE</div></div>
+        <div class="roster-card"><div class="ph"><span>P6</span></div><div class="num">#15</div><div class="nm">R. Mendez</div><div class="pos">3RD BASE</div></div>
+        <div class="roster-card"><div class="ph"><span>P7</span></div><div class="num">#03</div><div class="nm">E. Romero</div><div class="pos">LEFT FIELD</div></div>
+        <div class="roster-card"><div class="ph"><span>P8</span></div><div class="num">#11</div><div class="nm">N. Garcia</div><div class="pos">CENTER</div></div>
+        <div class="roster-card"><div class="ph"><span>P9</span></div><div class="num">#18</div><div class="nm">T. Lopez</div><div class="pos">RIGHT FIELD</div></div>
+        <div class="roster-card"><div class="ph"><span>P10</span></div><div class="num">#06</div><div class="nm">C. Aguilar</div><div class="pos">PITCHER</div></div>
+        <div class="roster-card"><div class="ph"><span>P11</span></div><div class="num">#21</div><div class="nm">B. Flores</div><div class="pos">UTILITY</div></div>
+        <div class="roster-card"><div class="ph"><span>P12</span></div><div class="num">#14</div><div class="nm">S. Ramirez</div><div class="pos">UTILITY</div></div>
+      </div>
+    </div>
+
+    <!-- 05 SEASON HIGHLIGHTS -->
+    <div class="sec shade">
+      <div class="eyerow"><span>05 · SEASON HIGHLIGHTS</span><span class="bar"></span></div>
+      <div class="cols-3" style="gap:32px;">
+        <div>
+          <div class="ph tall"><span>[Action shot]</span></div>
+          <div class="label" style="margin-top:14px;">MAY 2025</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0;">Tournament Title</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div class="ph tall"><span>[Action shot]</span></div>
+          <div class="label" style="margin-top:14px;">JULY 2025</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0;">Tournament Title</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div class="ph tall"><span>[Action shot]</span></div>
+          <div class="label" style="margin-top:14px;">OCT 2025</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:6px 0;">Tournament Title</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 CTA -->
+    <div class="sec dark center" style="padding:64px 32px;">
+      <div class="num">— 06</div>
+      <h3 class="big" style="color:#fff;">Want a spot on the bench?</h3>
+      <a class="btn-wf" style="margin-top:18px;">REQUEST A TRYOUT <span class="cta-flag">PRIMARY</span></a>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SCHEDULE
+     ========================================================= -->
+<section class="page" id="schedule">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 05</span><h2>Schedule</h2></div>
+    <span class="meta">Desktop</span>
+  </div>
+  <p class="page-intro">Editorial list view, not boxy cards. Date column is the visual anchor.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/schedule</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <div class="sec" style="padding:80px 56px 24px;">
+      <div class="label">SCHEDULE</div>
+      <h3 class="huge">The Road Ahead.</h3>
+    </div>
+
+    <!-- 02 FILTER TABS -->
+    <div class="sec" style="padding:0 56px;border:none;">
+      <div class="num">— 02</div>
+      <div class="tabs-h" style="margin-top:8px;">
+        <div class="t active">ALL TEAMS</div>
+        <div class="t">11U / 12U</div>
+        <div class="t">10U</div>
+      </div>
+    </div>
+
+    <!-- 03 UPCOMING -->
+    <div class="sec" style="padding-top:32px;">
+      <div class="eyerow"><span>03 · UPCOMING TOURNAMENTS</span><span class="bar"></span><span>NEXT 6</span></div>
+
+      <div class="sched-row">
+        <div class="date"><div class="day">14</div><div class="mo">JUN</div></div>
+        <div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:0;">USSSA Summer Classic</h4>
+          <div class="label" style="margin-top:4px;">FRESNO, CA · 3-DAY</div>
+        </div>
+        <div><span class="pill">USSSA</span></div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);">11U</div>
+        <span class="status">CONFIRMED</span>
+      </div>
+
+      <div class="sched-row">
+        <div class="date"><div class="day">28</div><div class="mo">JUN</div></div>
+        <div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:0;">Valley Open</h4>
+          <div class="label" style="margin-top:4px;">BAKERSFIELD, CA · 2-DAY</div>
+        </div>
+        <div><span class="pill">USSSA</span></div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);">BOTH</div>
+        <span class="status">CONFIRMED</span>
+      </div>
+
+      <div class="sched-row">
+        <div class="date"><div class="day">12</div><div class="mo">JUL</div></div>
+        <div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:0;">SoCal Showdown</h4>
+          <div class="label" style="margin-top:4px;">SANTA CLARITA · 3-DAY</div>
+        </div>
+        <div><span class="pill">USSSA</span></div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);">10U</div>
+        <span class="status">TENTATIVE</span>
+      </div>
+
+      <div class="sched-row">
+        <div class="date"><div class="day">02</div><div class="mo">AUG</div></div>
+        <div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:0;">Central CA Cup</h4>
+          <div class="label" style="margin-top:4px;">VISALIA, CA · 3-DAY</div>
+        </div>
+        <div><span class="pill">USSSA</span></div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);">11U</div>
+        <span class="status">CONFIRMED</span>
+      </div>
+
+      <div class="sched-row">
+        <div class="date"><div class="day">23</div><div class="mo">AUG</div></div>
+        <div>
+          <h4 style="font-family:serif;font-style:italic;font-size:22px;margin:0;">End-of-Summer Invitational</h4>
+          <div class="label" style="margin-top:4px;">BAKERSFIELD · 2-DAY</div>
+        </div>
+        <div><span class="pill">USSSA</span></div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);">BOTH</div>
+        <span class="status">CONFIRMED</span>
+      </div>
+    </div>
+
+    <!-- 04 PAST RESULTS -->
+    <div class="sec shade">
+      <div class="eyerow"><span>04 · PAST RESULTS</span><span class="bar"></span></div>
+      <div class="faq-row open">
+        <div class="q">SPRING 2025 — 6 tournaments</div>
+        <div class="plus"></div>
+      </div>
+      <div style="padding:14px 0;font-size:12px;color:var(--ink-2);">
+        <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+      </div>
+      <div class="faq-row">
+        <div class="q">WINTER 2024 — 4 tournaments</div>
+        <div class="plus"></div>
+      </div>
+      <div class="faq-row">
+        <div class="q">FALL 2024 — 5 tournaments</div>
+        <div class="plus"></div>
+      </div>
+      <div class="callout">Click row to expand · shows result list inline (no modal).</div>
+    </div>
+
+    <!-- 05 CTA BAND -->
+    <div class="sec dark center" style="padding:48px 32px;">
+      <div class="num">— 05</div>
+      <h3 style="color:#fff;font-family:serif;font-style:italic;font-size:30px;">Follow us on Instagram for live updates.</h3>
+      <a class="btn-wf" style="margin-top:16px;">@DIRTDAWGSBKSFLD</a>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     GALLERY
+     ========================================================= -->
+<section class="page" id="gallery">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 06</span><h2>Gallery</h2></div>
+    <span class="meta">Desktop</span>
+  </div>
+  <p class="page-intro">Masonry of varied sizes — feels editorial, not a uniform grid. Click for lightbox.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/gallery</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <div class="sec" style="padding:80px 56px 24px;">
+      <div class="label">GALLERY</div>
+      <h3 class="huge">Moments in the Dirt.</h3>
+    </div>
+
+    <div class="sec" style="padding:0 56px;border:none;">
+      <div class="num">— 02</div>
+      <div class="chips" style="margin-top:8px;">
+        <span class="chip active">ALL</span>
+        <span class="chip">GAMES</span>
+        <span class="chip">PRACTICE</span>
+        <span class="chip">TEAM</span>
+        <span class="chip">BEHIND THE SCENES</span>
+      </div>
+    </div>
+
+    <div class="sec" style="padding-top:32px;">
+      <div class="num">— 03</div>
+      <div class="masonry">
+        <div class="ph" style="height:260px;"><span>1</span></div>
+        <div class="ph" style="height:180px;"><span>2</span></div>
+        <div class="ph" style="height:320px;"><span>3</span></div>
+        <div class="ph" style="height:220px;"><span>4</span></div>
+        <div class="ph" style="height:240px;"><span>5</span></div>
+        <div class="ph" style="height:300px;"><span>6</span></div>
+        <div class="ph" style="height:180px;"><span>7</span></div>
+        <div class="ph" style="height:280px;"><span>8</span></div>
+        <div class="ph" style="height:220px;"><span>9</span></div>
+        <div class="ph" style="height:340px;"><span>10</span></div>
+        <div class="ph" style="height:200px;"><span>11</span></div>
+        <div class="ph" style="height:260px;"><span>12</span></div>
+        <div class="ph" style="height:180px;"><span>13</span></div>
+        <div class="ph" style="height:300px;"><span>14</span></div>
+        <div class="ph" style="height:220px;"><span>15</span></div>
+        <div class="ph" style="height:260px;"><span>16</span></div>
+      </div>
+      <div class="callout">Hover: 1px navy border + caption fades in over photo.</div>
+    </div>
+
+    <div class="sec center" style="padding:48px 32px;">
+      <div class="num">— 04</div>
+      <a class="btn-wf secondary">LOAD MORE</a>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SPONSORS
+     ========================================================= -->
+<section class="page" id="sponsors">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 07</span><h2>Sponsors</h2></div>
+    <span class="meta">Desktop</span>
+  </div>
+  <p class="page-intro">Three tiers, descending visual weight. Gold/Silver/Community is structural — the actual labels will read editorial, not Olympic.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/sponsors</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <div class="sec" style="padding:80px 56px 40px;">
+      <div class="label">SPONSORS</div>
+      <h3 class="huge">Partners in the Program.</h3>
+    </div>
+
+    <div class="sec">
+      <div class="eyerow"><span>02 · LEAD PARTNERS</span><span class="bar"></span><span>GOLD TIER</span></div>
+      <div class="cols-2" style="gap:24px;">
+        <div class="logo-box lg"><span>LOGO · LEAD PARTNER A</span></div>
+        <div class="logo-box lg"><span>LOGO · LEAD PARTNER B</span></div>
+      </div>
+    </div>
+
+    <div class="sec shade">
+      <div class="eyerow"><span>03 · PROGRAM SUPPORTERS</span><span class="bar"></span><span>SILVER TIER</span></div>
+      <div class="cols-4" style="gap:18px;">
+        <div class="logo-box"><span>LOGO</span></div>
+        <div class="logo-box"><span>LOGO</span></div>
+        <div class="logo-box"><span>LOGO</span></div>
+        <div class="logo-box"><span>LOGO</span></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="eyerow"><span>04 · COMMUNITY</span><span class="bar"></span><span>6 PARTNERS</span></div>
+      <div class="cols-6" style="gap:14px;">
+        <div class="logo-box sm"><span>LOGO</span></div>
+        <div class="logo-box sm"><span>LOGO</span></div>
+        <div class="logo-box sm"><span>LOGO</span></div>
+        <div class="logo-box sm"><span>LOGO</span></div>
+        <div class="logo-box sm"><span>LOGO</span></div>
+        <div class="logo-box sm"><span>LOGO</span></div>
+      </div>
+    </div>
+
+    <!-- 05 BECOME A SPONSOR -->
+    <div class="sec dark" style="padding:64px 56px;">
+      <div class="num">— 05</div>
+      <div class="cols-2" style="gap:48px;align-items:start;">
+        <div>
+          <h3 class="big" style="color:#fff;">Become a Sponsor.</h3>
+          <p style="opacity:.85;max-width:46ch;margin-top:12px;">Support a local development program. Your name on the dugout fence, the bus, and the season.</p>
+        </div>
+        <div class="stack-lg">
+          <div>
+            <div class="num">— 01</div>
+            <h4 style="color:#fff;font-family:serif;font-style:italic;font-size:20px;margin:4px 0 6px;">Brand on jerseys</h4>
+            <div class="txt l" style="background:rgba(255,255,255,.25);"></div>
+          </div>
+          <div>
+            <div class="num">— 02</div>
+            <h4 style="color:#fff;font-family:serif;font-style:italic;font-size:20px;margin:4px 0 6px;">Field-side signage</h4>
+            <div class="txt l" style="background:rgba(255,255,255,.25);"></div>
+          </div>
+          <div>
+            <div class="num">— 03</div>
+            <h4 style="color:#fff;font-family:serif;font-style:italic;font-size:20px;margin:4px 0 6px;">Quarterly community feature</h4>
+            <div class="txt l" style="background:rgba(255,255,255,.25);"></div>
+          </div>
+          <a class="btn-wf" style="margin-top:8px;">CONTACT US</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     TRYOUTS — PRIMARY CTA DESTINATION
+     ========================================================= -->
+<section class="page" id="tryouts">
+  <div class="page-head">
+    <div class="l">
+      <span class="eyebrow">PAGE 08</span>
+      <h2>Tryouts</h2>
+      <span class="cta-flag">PRIMARY CTA DESTINATION</span>
+    </div>
+    <span class="meta">Desktop · Most-trafficked page</span>
+  </div>
+  <p class="page-intro">Every primary CTA on the site lands here. Form sits above the fold once you scroll past hero. FAQ at the bottom handles parent questions.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/tryouts</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <!-- 01 HERO -->
+    <div class="sec" style="padding:80px 56px 48px;">
+      <div class="label" style="color:var(--marker);">TRYOUTS OPEN</div>
+      <h3 class="huge">Request a Tryout.</h3>
+      <p style="font-family:var(--hand);font-size:18px;margin-top:8px;color:var(--ink-2);">Two Saturdays this fall. Bring a glove and a parent.</p>
+    </div>
+
+    <!-- 02 TWO INFO CARDS -->
+    <div class="sec shade">
+      <div class="eyerow"><span>02 · TRYOUT DATES</span><span class="bar"></span></div>
+      <div class="cols-2" style="gap:24px;">
+        <div class="card" style="padding:28px;">
+          <div class="label">11U / 12U</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:30px;margin:6px 0 16px;">Saturday, Oct 18</h4>
+          <div class="contact-row"><span class="k">TIME</span><span>9:00 AM – 12:00 PM</span></div>
+          <div class="contact-row"><span class="k">LOCATION</span><span>Centennial Park, Bakersfield</span></div>
+          <div class="contact-row"><span class="k">BRING</span><span>Glove · cleats · bat · water</span></div>
+          <div class="contact-row" style="border:none;"><span class="k">COACH</span><span>Manny Guzman</span></div>
+        </div>
+        <div class="card" style="padding:28px;">
+          <div class="label">10U</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:30px;margin:6px 0 16px;">Saturday, Oct 25</h4>
+          <div class="contact-row"><span class="k">TIME</span><span>9:00 AM – 12:00 PM</span></div>
+          <div class="contact-row"><span class="k">LOCATION</span><span>Centennial Park, Bakersfield</span></div>
+          <div class="contact-row"><span class="k">BRING</span><span>Glove · cleats · bat · water</span></div>
+          <div class="contact-row" style="border:none;"><span class="k">COACH</span><span>Angel Montano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 REGISTRATION FORM -->
+    <div class="sec">
+      <div class="eyerow"><span>03 · REGISTRATION</span><span class="bar"></span><span>REQUIRED FIELDS *</span></div>
+
+      <div class="cols-2" style="gap:24px;">
+        <div class="field-stack">
+          <span class="cap">PLAYER NAME *</span>
+          <div class="field"><span>First &amp; last</span></div>
+        </div>
+        <div class="field-stack">
+          <span class="cap">DATE OF BIRTH *</span>
+          <div class="field"><span>MM / DD / YYYY</span></div>
+        </div>
+        <div class="field-stack">
+          <span class="cap">POSITION(S) *</span>
+          <div class="field"><span>Select up to 3</span></div>
+        </div>
+        <div class="field-stack">
+          <span class="cap">CURRENT TEAM</span>
+          <div class="field"><span>Optional</span></div>
+        </div>
+        <div class="field-stack">
+          <span class="cap">PARENT NAME *</span>
+          <div class="field"><span>First &amp; last</span></div>
+        </div>
+        <div class="field-stack">
+          <span class="cap">PHONE *</span>
+          <div class="field"><span>(   )   —</span></div>
+        </div>
+        <div class="field-stack" style="grid-column:span 2;">
+          <span class="cap">EMAIL *</span>
+          <div class="field"><span>parent@email.com</span></div>
+        </div>
+        <div class="field-stack" style="grid-column:span 2;">
+          <span class="cap">MESSAGE</span>
+          <div class="field" style="min-height:96px;align-items:flex-start;padding-top:14px;"><span>Anything we should know about the player.</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;display:flex;align-items:center;gap:16px;">
+        <a class="btn-wf">SUBMIT REQUEST <span class="cta-flag">PRIMARY</span></a>
+        <span style="font-family:var(--hand);font-size:13px;color:var(--pencil);">→ Confirmation email within 24h.</span>
+      </div>
+      <div class="callout">On submit: page replaces form with thank-you state · email notification to both coaches.</div>
+    </div>
+
+    <!-- 04 WHAT TO EXPECT -->
+    <div class="sec shade">
+      <div class="eyerow"><span>04 · WHAT TO EXPECT</span><span class="bar"></span></div>
+      <div class="cols-3" style="gap:32px;">
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">STEP 01</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:24px;margin:6px 0 8px;">Submit the form</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">STEP 02</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:24px;margin:6px 0 8px;">Show up Saturday</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--hand);color:var(--marker);font-size:14px;">STEP 03</div>
+          <h4 style="font-family:serif;font-style:italic;font-size:24px;margin:6px 0 8px;">Hear back within a week</h4>
+          <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 FAQ -->
+    <div class="sec">
+      <div class="eyerow"><span>05 · QUESTIONS</span><span class="bar"></span></div>
+      <div class="faq-row open">
+        <div class="q">What's the time commitment?</div>
+        <div class="plus"></div>
+      </div>
+      <div style="padding:6px 0 14px;font-size:12px;max-width:60ch;">
+        <div class="txt l"></div><div class="txt l"></div><div class="txt m"></div>
+      </div>
+      <div class="faq-row"><div class="q">How much does the program cost?</div><div class="plus"></div></div>
+      <div class="faq-row"><div class="q">Do you travel out of state?</div><div class="plus"></div></div>
+      <div class="faq-row"><div class="q">What if my kid is between age groups?</div><div class="plus"></div></div>
+      <div class="faq-row"><div class="q">Do you offer scholarships?</div><div class="plus"></div></div>
+      <div class="callout">Accordion: only one row open at a time · smooth height transition · plus → minus glyph.</div>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
+<section class="page" id="contact">
+  <div class="page-head">
+    <div class="l"><span class="eyebrow">PAGE 09</span><h2>Contact</h2></div>
+    <span class="meta">Desktop</span>
+  </div>
+  <p class="page-intro">Two-column. Contact info acts as a directory; form handles general inquiries (not tryouts).</p>
+
+  <div class="frame">
+    <div class="frame-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">dirtdawgsbaseball.com/contact</div><span class="size">DESKTOP · 1440</span></div>
+    <div data-slot="nav"></div>
+
+    <div class="sec" style="padding:80px 56px 32px;">
+      <div class="label">CONTACT</div>
+      <h3 class="huge">Get in Touch.</h3>
+    </div>
+
+    <div class="sec" style="padding:48px 56px;">
+      <div class="cols-2" style="gap:48px;align-items:start;">
+
+        <!-- LEFT: info -->
+        <div>
+          <div class="eyerow"><span>02 · DIRECTORY</span><span class="bar"></span></div>
+          <div class="contact-row"><span class="k">11U / 12U</span><span>manny@dirtdawgsbaseball.com</span></div>
+          <div class="contact-row"><span class="k">10U</span><span>angel@dirtdawgsbaseball.com</span></div>
+          <div class="contact-row"><span class="k">SPONSORS</span><span>sponsors@dirtdawgsbaseball.com</span></div>
+          <div class="contact-row"><span class="k">GENERAL</span><span>hello@dirtdawgsbaseball.com</span></div>
+          <div class="contact-row"><span class="k">PHONE</span><span>(661) 555-0142</span></div>
+          <div class="contact-row" style="border:none;"><span class="k">SOCIAL</span>
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span class="pill">@DIRTDAWGSBKSFLD</span>
+              <span class="pill">FACEBOOK</span>
+              <span class="pill">YOUTUBE</span>
+            </div>
+          </div>
+
+          <div class="callout">Coach emails go to a shared inbox · auto-routed by role.</div>
+        </div>
+
+        <!-- RIGHT: form -->
+        <div>
+          <div class="eyerow"><span>02 · INQUIRY FORM</span><span class="bar"></span></div>
+          <div class="stack">
+            <div class="field-stack"><span class="cap">YOUR NAME</span><div class="field"><span>First &amp; last</span></div></div>
+            <div class="field-stack"><span class="cap">EMAIL</span><div class="field"><span>you@email.com</span></div></div>
+            <div class="field-stack"><span class="cap">REASON</span><div class="field"><span>General / Sponsorship / Press / Other</span></div></div>
+            <div class="field-stack"><span class="cap">MESSAGE</span><div class="field" style="min-height:120px;align-items:flex-start;padding-top:14px;"><span>How can we help?</span></div></div>
+            <div>
+              <a class="btn-wf">SEND MESSAGE</a>
+              <span style="font-family:var(--hand);font-size:13px;color:var(--pencil);margin-left:14px;">→ For tryouts, use the tryout form.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="sec shade" style="padding:0;">
+      <div class="ph" style="aspect-ratio:24/7;border:0;min-height:0;"><span>[Map — practice location · Centennial Park, Bakersfield CA]</span></div>
+    </div>
+
+    <div data-slot="footer"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="wireframes.js"></script>
+</body>
+</html>

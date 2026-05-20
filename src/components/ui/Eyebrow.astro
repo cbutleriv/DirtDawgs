@@ -1,0 +1,62 @@
+---
+/**
+ * Eyebrow — the "— 01 ———————— SECTION LABEL" pattern used above every section headline.
+ * num:   two-digit gold section number, e.g. "01" (omit on dark sections if desired)
+ * dark:  true when sitting on a navy background (swaps divider color)
+ */
+interface Props {
+  num?: string;
+  dark?: boolean;
+  class?: string;
+}
+
+const { num, dark = false, class: className } = Astro.props;
+---
+
+<div class:list={['eyebrow', { dark }, className]}>
+  {num && <span class="num">{num}</span>}
+  <span class="line" aria-hidden="true"></span>
+  <span class="label"><slot /></span>
+</div>
+
+<style>
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .num {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-divider);
+    min-width: 24px;
+  }
+
+  .dark .line {
+    background: var(--color-divider-d);
+  }
+
+  .label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    flex-shrink: 0;
+  }
+
+  .dark .label {
+    color: rgba(250, 250, 247, 0.6);
+  }
+</style>

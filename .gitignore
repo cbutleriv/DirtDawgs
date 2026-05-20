@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro cache
+.astro/
+
+# Local tooling
+.claude/
+.playwright-mcp/
+
+# Source video (duplicate of public/videos/home-intro.mp4)
+Dirt Dogs Home Page.mp4
+
+# OS
+.DS_Store
+Thumbs.db

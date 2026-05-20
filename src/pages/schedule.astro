@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import ScheduleFilter from '../components/sections/ScheduleFilter';
+---
+
+<BaseLayout
+  title="Schedule — Bakersfield Dirt Dawgs"
+  description="Upcoming tournaments and past results for the Bakersfield Dirt Dawgs 10U and 11U/12U USSSA travel ball teams."
+  canonicalPath="/schedule"
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       01 · PAGE HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <section class="sched-header">
+    <div class="container">
+      <p class="sched-eyebrow">Schedule</p>
+      <h1 class="sched-h1">The Road Ahead.</h1>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       02 · FILTER + EVENTS + PAST RESULTS (React island)
+  ════════════════════════════════════════════════════════════ -->
+  <section class="sched-main">
+    <div class="container">
+      <div class="reveal">
+        <Eyebrow num="02">Upcoming Tournaments</Eyebrow>
+        <ScheduleFilter client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       03 · CTA BAND
+  ════════════════════════════════════════════════════════════ -->
+  <section class="sched-cta bg-dark">
+    <div class="container sched-cta-inner">
+      <p class="sched-cta-heading">
+        Follow us on Instagram for live updates from the field.
+      </p>
+      <a
+        href="https://instagram.com"
+        class="sched-ig-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Dirt Dawgs on Instagram"
+      >
+        @DirtDawgsBksfld
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── 01 · Header ─────────────────────────────────────── */
+  .sched-header {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .sched-eyebrow {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 16px;
+  }
+
+  .sched-h1 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    color: var(--color-navy);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ── 02 · Main section ───────────────────────────────── */
+  .sched-main {
+    padding-block: var(--section-py);
+  }
+
+  /* Schedule filter island styles */
+  :global(.sched-tabs) {
+    display: flex;
+    gap: 2px;
+    margin: 32px 0 0;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  :global(.sched-tab) {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--color-ink-3);
+    cursor: pointer;
+    transition:
+      color var(--duration-base) var(--ease-brand),
+      border-color var(--duration-base) var(--ease-brand);
+    margin-bottom: -1px;
+  }
+
+  :global(.sched-tab:hover) {
+    color: var(--color-navy);
+  }
+
+  :global(.sched-tab--active) {
+    color: var(--color-navy);
+    border-bottom-color: var(--color-gold);
+  }
+
+  :global(.sched-list) {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.sched-empty) {
+    font-size: 15px;
+    color: var(--color-ink-3);
+    padding: 32px 0;
+    margin: 0;
+  }
+
+  :global(.sched-row) {
+    display: grid;
+    grid-template-columns: 72px 1fr auto auto;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-divider-w);
+  }
+
+  :global(.sched-row:first-child) {
+    border-top: 1px solid var(--color-divider-w);
+  }
+
+  :global(.sched-date) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    flex-shrink: 0;
+  }
+
+  :global(.sched-day) {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  :global(.sched-month) {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--color-gold);
+  }
+
+  :global(.sched-info) {
+    min-width: 0;
+  }
+
+  :global(.sched-title) {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.5vw, 22px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+
+  :global(.sched-meta) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 0;
+  }
+
+  :global(.sched-team-label) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    white-space: nowrap;
+  }
+
+  :global(.sched-status) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+
+  :global(.sched-status--confirmed) {
+    background: rgba(232, 181, 61, 0.12);
+    color: #8a6700;
+  }
+
+  :global(.sched-status--tentative) {
+    background: rgba(74, 74, 74, 0.08);
+    color: var(--color-ink-2);
+  }
+
+  /* Past results */
+  :global(.past-results) {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  :global(.past-list) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.past-item) {
+    border-bottom: 1px solid var(--color-divider-w);
+  }
+
+  :global(.past-item:first-child) {
+    border-top: 1px solid var(--color-divider-w);
+  }
+
+  :global(.past-trigger) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  :global(.past-label) {
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+  }
+
+  :global(.past-icon) {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--color-gold);
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform var(--duration-base) var(--ease-brand);
+  }
+
+  :global(.past-panel) {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  :global(.past-item--open .past-panel) {
+    grid-template-rows: 1fr;
+  }
+
+  :global(.past-panel-inner) {
+    overflow: hidden;
+  }
+
+  :global(.past-results-list) {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  :global(.past-result-item) {
+    font-size: 14px;
+    color: var(--color-ink-2);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  :global(.past-result-item::before) {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+    font-size: 12px;
+  }
+
+  /* ── 03 · CTA ────────────────────────────────────────── */
+  .sched-cta {
+    padding-block: clamp(48px, 6vw, 80px);
+  }
+
+  .sched-cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .sched-cta-heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 26px);
+    color: var(--color-offwhite);
+    line-height: 1.4;
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .sched-ig-btn {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    background: var(--color-gold);
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background var(--duration-base) var(--ease-brand);
+  }
+
+  .sched-ig-btn:hover {
+    background: var(--color-gold-hover);
+  }
+
+  /* ── Responsive ──────────────────────────────────────── */
+  @media (max-width: 640px) {
+    :global(.sched-row) {
+      grid-template-columns: 56px 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    :global(.sched-team-label) {
+      display: none;
+    }
+
+    :global(.sched-status) {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+</style>

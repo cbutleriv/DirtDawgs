@@ -1,0 +1,638 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Pill from '../components/ui/Pill.astro';
+import TryoutForm from '../components/sections/TryoutForm';
+import FAQAccordion from '../components/sections/FAQAccordion';
+
+const tryoutCards = [
+  {
+    label: '11U / 12U',
+    pill: 'Rising to 12U',
+    details: [
+      { term: 'Age Eligibility', def: 'Turning 11 or 12 in 2026' },
+      { term: 'Format', def: 'USSSA travel ball' },
+      { term: 'Season', def: 'Spring – Fall 2026' },
+      { term: 'Head Coach', def: 'Coach Manny' },
+      { term: 'Spots Available', def: 'Limited — evaluated individually' },
+    ],
+  },
+  {
+    label: '10U',
+    pill: 'Tryouts Open',
+    details: [
+      { term: 'Age Eligibility', def: 'Turning 10 in 2026' },
+      { term: 'Format', def: 'USSSA travel ball' },
+      { term: 'Season', def: 'Spring – Fall 2026' },
+      { term: 'Head Coach', def: 'Coach Angel' },
+      { term: 'Spots Available', def: 'Limited — evaluated individually' },
+    ],
+  },
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Submit your request.',
+    body: "Fill out the form below with your player's info and positions. A coach will reach out within 24 hours to confirm the tryout date, time, and location.",
+  },
+  {
+    num: '02',
+    title: 'Show up and play.',
+    body: 'Bring your full gear and a great attitude. Coaches evaluate fielding, hitting, arm strength, and — just as importantly — how a player carries themselves on the field.',
+  },
+  {
+    num: '03',
+    title: 'Hear from us.',
+    body: "Every player and family receives a follow-up. Offers are extended to players who are the right fit — athletically and character-wise. We don't ghost families.",
+  },
+];
+---
+
+<BaseLayout
+  title="Tryouts — Bakersfield Dirt Dawgs"
+  description="Request a tryout for the Bakersfield Dirt Dawgs 10U or 11U/12U travel baseball program. USSSA travel ball, Bakersfield CA."
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       01 · HERO
+  ════════════════════════════════════════════════════════════ -->
+  <section class="tryouts-hero">
+    <div class="container">
+      <Pill variant="gold">Tryouts Open</Pill>
+      <h1 class="tryouts-h1">Request a Tryout.</h1>
+      <p class="tryouts-sub">
+        We build rosters one player at a time — talent, character, and a commitment to growth. If you're ready to compete on the USSSA circuit and play for something bigger than baseball, let's talk.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       02 · TRYOUT INFO CARDS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="tryout-info section-cream">
+    <div class="container">
+      <Eyebrow num="02" label="Open Rosters" />
+      <div class="info-grid reveal">
+        {tryoutCards.map((card) => (
+          <div class="info-card">
+            <div class="info-card-header">
+              <span class="info-card-label">{card.label}</span>
+              <Pill variant="outline">{card.pill}</Pill>
+            </div>
+            <dl class="info-dl">
+              {card.details.map(({ term, def }) => (
+                <div class="info-dl-row">
+                  <dt class="info-dt">{term}</dt>
+                  <dd class="info-dd">{def}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       03 · REGISTRATION FORM
+  ════════════════════════════════════════════════════════════ -->
+  <section class="tryout-form-section">
+    <div class="container">
+      <div class="form-intro reveal">
+        <Eyebrow num="03" label="Register" />
+        <h2 class="form-heading">Ready to compete?</h2>
+        <p class="form-sub">Submit your request below. We'll be in touch within 24 hours with tryout details.</p>
+      </div>
+      <TryoutForm client:load />
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       04 · WHAT TO EXPECT
+  ════════════════════════════════════════════════════════════ -->
+  <section class="expect-section section-cream">
+    <div class="container">
+      <Eyebrow num="04" label="The Process" />
+      <h2 class="expect-heading">What to expect.</h2>
+      <div class="steps-grid reveal">
+        {steps.map((step) => (
+          <div class="step">
+            <span class="step-num">{step.num}</span>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-body">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       05 · FAQ
+  ════════════════════════════════════════════════════════════ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header-row reveal">
+        <Eyebrow num="05" label="Questions" />
+        <h2 class="faq-heading">Frequently asked.</h2>
+      </div>
+      <FAQAccordion client:load />
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Shared ───────────────────────────────────────── */
+  .section-cream {
+    background-color: var(--color-cream);
+  }
+
+  /* ── 01 · Hero ───────────────────────────────────── */
+  .tryouts-hero {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .tryouts-h1 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h1);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.05;
+    margin: 24px 0 28px;
+    max-width: 14ch;
+  }
+
+  .tryouts-sub {
+    font-size: clamp(16px, 1.5vw, 20px);
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    max-width: 56ch;
+  }
+
+  /* ── 02 · Info cards ─────────────────────────────── */
+  .tryout-info {
+    padding-block: var(--section-py);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .info-card {
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-card);
+    padding: 36px 32px;
+    background: var(--color-offwhite);
+  }
+
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .info-card-label {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 400;
+    color: var(--color-navy);
+  }
+
+  .info-dl {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .info-dl-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .info-dt {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    flex-shrink: 0;
+  }
+
+  .info-dd {
+    font-size: 14px;
+    color: var(--color-navy);
+    text-align: right;
+    margin: 0;
+  }
+
+  /* ── 03 · Form section ───────────────────────────── */
+  .tryout-form-section {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .form-intro {
+    margin-bottom: 48px;
+  }
+
+  .form-heading {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.1;
+    margin: 16px 0 12px;
+  }
+
+  .form-sub {
+    font-size: 16px;
+    color: var(--color-ink-2);
+    line-height: 1.6;
+    max-width: 52ch;
+  }
+
+  /* ── TryoutForm island styles (:global for React) ── */
+  :global(.tf-form) {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 780px;
+  }
+
+  :global(.tf-row) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  :global(.tf-field) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  :global(.tf-label) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-2);
+  }
+
+  :global(.tf-optional) {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-ink-3);
+  }
+
+  :global(.tf-input) {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-navy);
+    background: var(--color-offwhite);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    transition: border-color var(--duration-base) var(--ease-brand),
+                box-shadow var(--duration-base) var(--ease-brand);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  :global(.tf-input:focus) {
+    border-color: var(--color-navy);
+    box-shadow: 0 0 0 3px rgba(11, 27, 59, 0.08);
+  }
+
+  :global(.tf-input--error) {
+    border-color: #c0392b;
+  }
+
+  :global(.tf-input--error:focus) {
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+  }
+
+  :global(.tf-textarea) {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  :global(.tf-chips) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  :global(.tf-chips--error .tf-chip:not(.tf-chip--on)) {
+    border-color: #c0392b;
+  }
+
+  :global(.tf-chip) {
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-sm);
+    background: var(--color-offwhite);
+    color: var(--color-navy);
+    cursor: pointer;
+    transition: background var(--duration-base) var(--ease-brand),
+                border-color var(--duration-base) var(--ease-brand),
+                color var(--duration-base) var(--ease-brand);
+  }
+
+  :global(.tf-chip--on) {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-offwhite);
+  }
+
+  :global(.tf-chip--dim) {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  :global(.tf-field-error) {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #c0392b;
+    line-height: 1.4;
+  }
+
+  :global(.tf-footer) {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+  }
+
+  :global(.tf-submit) {
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    background: var(--color-navy);
+    color: var(--color-offwhite);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: opacity var(--duration-base) var(--ease-brand);
+  }
+
+  :global(.tf-submit:disabled) {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  :global(.tf-note) {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-ink-3);
+    margin: 0;
+  }
+
+  :global(.tf-success) {
+    max-width: 560px;
+    padding: 48px 0;
+  }
+
+  :global(.tf-success-eyebrow) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 16px;
+  }
+
+  :global(.tf-success-heading) {
+    font-family: var(--font-serif);
+    font-size: clamp(24px, 2.4vw, 36px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 16px;
+  }
+
+  :global(.tf-success-body) {
+    font-size: 16px;
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    margin: 0 0 32px;
+  }
+
+  :global(.tf-reset) {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── 04 · What to Expect ─────────────────────────── */
+  .expect-section {
+    padding-block: var(--section-py);
+  }
+
+  .expect-heading {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.1;
+    margin: 16px 0 48px;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    border-top: 1px solid var(--color-divider);
+    padding-top: 40px;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step-num {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+  }
+
+  .step-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 24px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .step-body {
+    font-size: 15px;
+    color: var(--color-ink-2);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── 05 · FAQ ────────────────────────────────────── */
+  .faq-section {
+    padding-block: var(--section-py);
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .faq-header-row {
+    margin-bottom: 48px;
+  }
+
+  .faq-heading {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.1;
+    margin: 16px 0 0;
+  }
+
+  /* FAQ accordion island styles */
+  :global(.faq-list) {
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.faq-item) {
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  :global(.faq-item:first-child) {
+    border-top: 1px solid var(--color-divider);
+  }
+
+  :global(.faq-trigger) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  :global(.faq-q) {
+    font-family: var(--font-serif);
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.35;
+  }
+
+  :global(.faq-icon) {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--color-gold);
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform var(--duration-base) var(--ease-brand);
+    width: 20px;
+    text-align: center;
+  }
+
+  :global(.faq-panel) {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  :global(.faq-item--open .faq-panel) {
+    grid-template-rows: 1fr;
+  }
+
+  :global(.faq-panel-inner) {
+    overflow: hidden;
+  }
+
+  :global(.faq-a) {
+    font-size: 15px;
+    color: var(--color-ink-2);
+    line-height: 1.75;
+    margin: 0;
+    padding-bottom: 24px;
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 860px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    :global(.tf-row) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .info-card {
+      padding: 24px 20px;
+    }
+
+    .info-dl-row {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .info-dd {
+      text-align: left;
+    }
+
+    :global(.tf-footer) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

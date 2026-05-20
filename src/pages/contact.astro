@@ -1,0 +1,435 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import ContactForm from '../components/sections/ContactForm';
+
+const directory = [
+  { label: '11U / 12U',  value: 'manny@dirtdawgsbaseball.com',    href: 'mailto:manny@dirtdawgsbaseball.com'   },
+  { label: '10U',         value: 'angel@dirtdawgsbaseball.com',    href: 'mailto:angel@dirtdawgsbaseball.com'   },
+  { label: 'Sponsors',    value: 'sponsors@dirtdawgsbaseball.com', href: 'mailto:sponsors@dirtdawgsbaseball.com'},
+  { label: 'General',     value: 'hello@dirtdawgsbaseball.com',    href: 'mailto:hello@dirtdawgsbaseball.com'   },
+  { label: 'Phone',       value: '(661) 555-0142',                  href: 'tel:+16615550142'                     },
+] as const;
+
+const social = [
+  { label: '@DirtDawgsBksfld', platform: 'Instagram', href: 'https://instagram.com' },
+  { label: 'Facebook',         platform: 'Facebook',  href: 'https://facebook.com'  },
+  { label: 'YouTube',          platform: 'YouTube',   href: 'https://youtube.com'   },
+] as const;
+---
+
+<BaseLayout
+  title="Contact — Bakersfield Dirt Dawgs"
+  description="Get in touch with the Bakersfield Dirt Dawgs coaching staff. Contact for tryout inquiries, sponsorships, or general questions."
+  canonicalPath="/contact"
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       01 · PAGE HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <section class="contact-header">
+    <div class="container">
+      <p class="contact-eyebrow">Contact</p>
+      <h1 class="contact-h1">Get in Touch.</h1>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       02 · DIRECTORY + FORM
+  ════════════════════════════════════════════════════════════ -->
+  <section class="contact-main">
+    <div class="container">
+      <div class="contact-grid reveal">
+
+        <!-- Left: Directory -->
+        <div class="directory">
+          <Eyebrow num="02">Directory</Eyebrow>
+          <dl class="dir-list">
+            {directory.map(({ label, value, href }) => (
+              <div class="dir-row">
+                <dt class="dir-key">{label}</dt>
+                <dd class="dir-val">
+                  <a href={href} class="dir-link">{value}</a>
+                </dd>
+              </div>
+            ))}
+            <div class="dir-row">
+              <dt class="dir-key">Social</dt>
+              <dd class="dir-val dir-social">
+                {social.map(({ label, href }) => (
+                  <a href={href} class="dir-social-link" target="_blank" rel="noopener noreferrer">
+                    {label}
+                  </a>
+                ))}
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="form-col">
+          <Eyebrow num="03">Inquiry Form</Eyebrow>
+          <div class="form-wrap">
+            <ContactForm client:load />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       04 · MAP
+  ════════════════════════════════════════════════════════════ -->
+  <section class="map-section section-cream" aria-label="Practice location map">
+    <div class="map-placeholder reveal" role="img" aria-label="Map — Centennial Park, Bakersfield CA">
+      <p class="map-label">Practice Location — Centennial Park, Bakersfield, CA</p>
+      <p class="map-sub">Swap in a real map embed before launch.</p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .section-cream { background-color: var(--color-cream); }
+
+  /* ── 01 · Header ─────────────────────────────────────── */
+  .contact-header {
+    padding-block: var(--section-py);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .contact-eyebrow {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 16px;
+  }
+
+  .contact-h1 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    color: var(--color-navy);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ── 02 · Main ───────────────────────────────────────── */
+  .contact-main {
+    padding-block: var(--section-py);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* Directory */
+  .directory {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .dir-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dir-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-divider-w);
+  }
+
+  .dir-row:first-child {
+    border-top: 1px solid var(--color-divider-w);
+  }
+
+  .dir-key {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    flex-shrink: 0;
+  }
+
+  .dir-val {
+    font-size: 14px;
+    color: var(--color-navy);
+    text-align: right;
+    margin: 0;
+  }
+
+  .dir-link {
+    color: var(--color-navy);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-fast) var(--ease-brand);
+  }
+
+  .dir-link:hover {
+    border-bottom-color: var(--color-navy);
+  }
+
+  .dir-social {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .dir-social-link {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-pill);
+    transition:
+      background var(--duration-fast) var(--ease-brand),
+      border-color var(--duration-fast) var(--ease-brand);
+  }
+
+  .dir-social-link:hover {
+    background: var(--color-cream);
+    border-color: var(--color-navy-20);
+  }
+
+  /* Form column */
+  .form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .form-wrap {
+    /* ContactForm island global styles below */
+  }
+
+  /* ContactForm island :global styles */
+  :global(.cf-form) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  :global(.cf-field) {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  :global(.cf-label) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink-2);
+  }
+
+  :global(.cf-input) {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-navy);
+    background: var(--color-offwhite);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition:
+      border-color var(--duration-base) var(--ease-brand),
+      box-shadow var(--duration-base) var(--ease-brand);
+    appearance: none;
+  }
+
+  :global(.cf-input:focus) {
+    border-color: var(--color-navy);
+    box-shadow: 0 0 0 3px rgba(11, 27, 59, 0.08);
+  }
+
+  :global(.cf-input--error) {
+    border-color: #c0392b;
+  }
+
+  :global(.cf-input--error:focus) {
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+  }
+
+  :global(.cf-select) {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a4a4a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  :global(.cf-textarea) {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  :global(.cf-field-error) {
+    font-size: 12px;
+    color: #c0392b;
+    line-height: 1.4;
+  }
+
+  :global(.cf-footer) {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 4px;
+  }
+
+  :global(.cf-submit) {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    background: var(--color-navy);
+    color: var(--color-offwhite);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: opacity var(--duration-base) var(--ease-brand);
+  }
+
+  :global(.cf-submit:disabled) {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  :global(.cf-note) {
+    font-size: 13px;
+    color: var(--color-ink-3);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  :global(.cf-link) {
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-navy);
+  }
+
+  :global(.cf-success) {
+    padding: 32px 0;
+  }
+
+  :global(.cf-success-eyebrow) {
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 14px;
+  }
+
+  :global(.cf-success-heading) {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+
+  :global(.cf-success-body) {
+    font-size: 15px;
+    color: var(--color-ink-2);
+    line-height: 1.7;
+    margin: 0 0 24px;
+    max-width: 52ch;
+  }
+
+  :global(.cf-reset) {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── 04 · Map ────────────────────────────────────────── */
+  .map-section {
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .map-placeholder {
+    aspect-ratio: 24 / 7;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--color-cream-deep);
+  }
+
+  .map-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-2);
+    margin: 0;
+  }
+
+  .map-sub {
+    font-size: 13px;
+    color: var(--color-ink-3);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ── Responsive ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .dir-val {
+      text-align: left;
+    }
+
+    .dir-social {
+      justify-content: flex-start;
+    }
+  }
+</style>
