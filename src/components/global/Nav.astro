@@ -280,24 +280,21 @@ const currentPath = Astro.url.pathname;
   /* ---- Responsive ---- */
   @media (max-width: 900px) {
     .desktop-nav,
-    .cta-desktop,
-    .hamburger {
+    .cta-desktop {
       display: none;
     }
 
-    /* Push logo flush to the right viewport edge on mobile */
+    .hamburger {
+      display: flex;
+    }
+
     .header-inner {
-      justify-content: flex-end;
-      padding-inline-end: 0;
+      justify-content: space-between;
+      padding-inline-start: 0;
     }
 
     .brand {
-      cursor: pointer;
-    }
-
-    .monogram {
-      transition: opacity var(--duration-base) var(--ease-brand);
-      transform: translateX(40px);
+      margin-inline-start: -12px;
     }
 
     .monogram:active {

@@ -72,7 +72,7 @@ const steps = [
   ════════════════════════════════════════════════════════════ -->
   <section class="tryout-info section-cream">
     <div class="container">
-      <Eyebrow num="02" label="Open Rosters" />
+      <Eyebrow>Open Rosters</Eyebrow>
       <div class="info-grid reveal">
         {tryoutCards.map((card) => (
           <div class="info-card">
@@ -100,7 +100,7 @@ const steps = [
   <section class="tryout-form-section">
     <div class="container">
       <div class="form-intro reveal">
-        <Eyebrow num="03" label="Register" />
+        <Eyebrow>Register</Eyebrow>
         <h2 class="form-heading">Ready to compete?</h2>
         <p class="form-sub">Submit your request below. We'll be in touch within 24 hours with tryout details.</p>
       </div>
@@ -113,7 +113,7 @@ const steps = [
   ════════════════════════════════════════════════════════════ -->
   <section class="expect-section section-cream">
     <div class="container">
-      <Eyebrow num="04" label="The Process" />
+      <Eyebrow>The Process</Eyebrow>
       <h2 class="expect-heading">What to expect.</h2>
       <div class="steps-grid reveal">
         {steps.map((step) => (
@@ -133,7 +133,7 @@ const steps = [
   <section class="faq-section">
     <div class="container">
       <div class="faq-header-row reveal">
-        <Eyebrow num="05" label="Questions" />
+        <Eyebrow>Questions</Eyebrow>
         <h2 class="faq-heading">Frequently asked.</h2>
       </div>
       <FAQAccordion client:load />
@@ -151,14 +151,15 @@ const steps = [
   /* ── 01 · Hero ───────────────────────────────────── */
   .tryouts-hero {
     padding-block: var(--section-py);
-    border-bottom: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider-d);
+    background-color: var(--color-navy);
   }
 
   .tryouts-h1 {
     font-family: var(--font-serif);
     font-size: var(--fs-h1);
     font-weight: 400;
-    color: var(--color-navy);
+    color: var(--color-offwhite);
     line-height: 1.05;
     margin: 24px 0 28px;
     max-width: 14ch;
@@ -166,7 +167,7 @@ const steps = [
 
   .tryouts-sub {
     font-size: clamp(16px, 1.5vw, 20px);
-    color: var(--color-ink-2);
+    color: rgba(250, 250, 247, 0.72);
     line-height: 1.65;
     max-width: 56ch;
   }
