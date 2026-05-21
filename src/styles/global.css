@@ -149,6 +149,26 @@
   .bg-dark    { background-color: var(--color-navy); }
   .bg-black   { background-color: var(--color-black); }
 
+  /* Page header photo/overlay pattern — shared across all navy page headers */
+  .page-header-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 35%;
+    filter: grayscale(1) contrast(1.05) brightness(0.75);
+  }
+
+  .page-header-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 27, 59, 0.72);
+  }
+
+  .page-header-content {
+    position: relative;
+    z-index: 1;
+  }
+
   /* --- Typography --- */
 
   /* Display — hero only */

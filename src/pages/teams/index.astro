@@ -40,7 +40,9 @@ const teams = [
        01 · PAGE HEADER
   ════════════════════════════════════════════════════════════ -->
   <section class="teams-header">
-    <div class="container">
+    <div class="page-header-photo" role="img" aria-label="Dirt Dawgs mascot on the infield" style="background-image: url('/images/ending-frame.jpeg');"></div>
+    <div class="page-header-overlay" aria-hidden="true"></div>
+    <div class="container page-header-content">
       <p class="teams-eyebrow">Our Teams</p>
       <h1 class="teams-h1">Two Teams. One Standard.</h1>
     </div>
@@ -98,6 +100,8 @@ const teams = [
 
   /* ── 01 · Header ─────────────────────────────────────── */
   .teams-header {
+    position: relative;
+    overflow: hidden;
     padding-block: var(--section-py);
     border-bottom: 1px solid var(--color-divider-d);
     background-color: var(--color-navy);

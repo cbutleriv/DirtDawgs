@@ -41,7 +41,9 @@ const perks = [
        01 · PAGE HEADER
   ════════════════════════════════════════════════════════════ -->
   <section class="sponsors-header">
-    <div class="container">
+    <div class="page-header-photo" role="img" aria-label="Dirt Dawgs mascot on the infield" style="background-image: url('/images/ending-frame.jpeg');"></div>
+    <div class="page-header-overlay" aria-hidden="true"></div>
+    <div class="container page-header-content">
       <p class="sponsors-eyebrow">Sponsors</p>
       <h1 class="sponsors-h1">Partners in the Program.</h1>
     </div>
@@ -131,6 +133,8 @@ const perks = [
 
   /* ── 01 · Header ─────────────────────────────────────── */
   .sponsors-header {
+    position: relative;
+    overflow: hidden;
     padding-block: var(--section-py);
     border-bottom: 1px solid var(--color-divider-d);
     background-color: var(--color-navy);

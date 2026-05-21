@@ -14,7 +14,9 @@ import ScheduleFilter from '../components/sections/ScheduleFilter';
        01 · PAGE HEADER
   ════════════════════════════════════════════════════════════ -->
   <section class="sched-header">
-    <div class="container">
+    <div class="page-header-photo" role="img" aria-label="Dirt Dawgs mascot on the infield" style="background-image: url('/images/ending-frame.jpeg');"></div>
+    <div class="page-header-overlay" aria-hidden="true"></div>
+    <div class="container page-header-content">
       <p class="sched-eyebrow">Schedule</p>
       <h1 class="sched-h1">The Road Ahead.</h1>
     </div>
@@ -57,6 +59,8 @@ import ScheduleFilter from '../components/sections/ScheduleFilter';
 <style>
   /* ── 01 · Header ─────────────────────────────────────── */
   .sched-header {
+    position: relative;
+    overflow: hidden;
     padding-block: var(--section-py);
     border-bottom: 1px solid var(--color-divider-d);
     background-color: var(--color-navy);

@@ -7,26 +7,18 @@ interface Photo {
   alt: string;
   caption: string;
   category: Exclude<Category, 'ALL'>;
-  height: number;
 }
 
 const PHOTOS: Photo[] = [
-  { src: '/images/hero-placeholder.svg', alt: 'Dirt Dawgs infield play',           caption: 'Double play in the making — Valley Open, June 2025.',           category: 'GAMES',    height: 260 },
-  { src: '/images/hero-placeholder.svg', alt: 'Pre-game warmup',                    caption: 'Morning warmup before the opener.',                             category: 'PRACTICE', height: 180 },
-  { src: '/images/hero-placeholder.svg', alt: 'Team dugout',                        caption: 'The bench during the Spring Classic.',                          category: 'TEAM',     height: 320 },
-  { src: '/images/hero-placeholder.svg', alt: 'Pitching delivery',                  caption: 'Starting pitcher, top of the third.',                          category: 'GAMES',    height: 220 },
-  { src: '/images/hero-placeholder.svg', alt: 'Coach Manny with players',           caption: 'Coach Manny on the mound during practice.',                    category: 'PRACTICE', height: 240 },
-  { src: '/images/hero-placeholder.svg', alt: 'Team photo — 11U',                   caption: 'Dirt Dawgs 11U — end of season portrait.',                     category: 'TEAM',     height: 300 },
-  { src: '/images/hero-placeholder.svg', alt: 'Slide into home plate',              caption: 'Safe at home — Central CA Cup, August.',                       category: 'GAMES',    height: 180 },
-  { src: '/images/hero-placeholder.svg', alt: 'Batting practice',                   caption: 'Taking cuts before the game.',                                 category: 'PRACTICE', height: 280 },
-  { src: '/images/hero-placeholder.svg', alt: 'Parents and families in the stands', caption: 'The Dirt Dawgs family showing up.',                            category: 'BTS',      height: 220 },
-  { src: '/images/hero-placeholder.svg', alt: 'Trophy after championship win',      caption: 'Valley Spring Classic — champions.',                           category: 'GAMES',    height: 340 },
-  { src: '/images/hero-placeholder.svg', alt: 'Fielding drill',                     caption: 'Ground ball repetitions — early morning session.',             category: 'PRACTICE', height: 200 },
-  { src: '/images/hero-placeholder.svg', alt: '10U team photo',                     caption: 'Dirt Dawgs 10U — Kern County Showcase.',                       category: 'TEAM',     height: 260 },
-  { src: '/images/hero-placeholder.svg', alt: 'Coach Angel with player',            caption: 'One-on-one mechanics work with Coach Angel.',                  category: 'PRACTICE', height: 180 },
-  { src: '/images/hero-placeholder.svg', alt: 'Post-game celebration',              caption: 'After the W — SoCal Showdown, July.',                         category: 'BTS',      height: 300 },
-  { src: '/images/hero-placeholder.svg', alt: 'Batter at the plate',               caption: 'Clean swing — End-of-Summer Invitational.',                   category: 'GAMES',    height: 220 },
-  { src: '/images/hero-placeholder.svg', alt: 'Team meal',                          caption: 'Dinner the night before a tournament. Part of the culture.',   category: 'BTS',      height: 260 },
+  { src: '/images/players/adam-pitching.jpg',        alt: 'Adam on the mound',        caption: 'Adam — Pitching',          category: 'GAMES' },
+  { src: '/images/players/alfred-pitching.jpeg',     alt: 'Alfred pitching',          caption: 'Alfred — Pitching',        category: 'GAMES' },
+  { src: '/images/players/armando-hitting.jpeg',     alt: 'Armando at the plate',     caption: 'Armando — Hitting',        category: 'GAMES' },
+  { src: '/images/players/christian-hitting-1.jpeg', alt: 'Christian hitting',        caption: 'Christian — Hitting',      category: 'GAMES' },
+  { src: '/images/players/christian-hitting-2.jpg',  alt: 'Christian at the plate',   caption: 'Christian — At the Plate', category: 'GAMES' },
+  { src: '/images/players/christian-scoring.jpg',    alt: 'Christian scoring',        caption: 'Christian — Scoring',      category: 'GAMES' },
+  { src: '/images/players/levi-hitting.jpeg',        alt: 'Levi hitting',             caption: 'Levi — Hitting',           category: 'GAMES' },
+  { src: '/images/players/maverick-hitting.jpeg',    alt: 'Maverick at the plate',    caption: 'Maverick — Hitting',       category: 'GAMES' },
+  { src: '/images/players/michael-catching.jpeg',    alt: 'Michael behind the plate', caption: 'Michael — Catching',       category: 'GAMES' },
 ];
 
 const CHIPS: { label: string; value: Category }[] = [
@@ -80,6 +72,9 @@ export default function GalleryGrid() {
         ))}
       </div>
 
+      {/* Photo count */}
+      <p className="gallery-stat">9 Photos · Season 2026</p>
+
       {/* Masonry grid */}
       <div className="gallery-masonry" role="list">
         {shown.map((photo, i) => (
@@ -87,7 +82,6 @@ export default function GalleryGrid() {
             key={`${photo.alt}-${i}`}
             type="button"
             className="gallery-item"
-            style={{ '--img-height': `${photo.height}px` } as React.CSSProperties}
             onClick={() => openLightbox(i)}
             aria-label={`Open photo: ${photo.alt}`}
             role="listitem"
@@ -96,7 +90,6 @@ export default function GalleryGrid() {
               src={photo.src}
               alt={photo.alt}
               className="gallery-img"
-              style={{ height: photo.height }}
             />
             <div className="gallery-caption" aria-hidden="true">
               <p className="gallery-caption-text">{photo.caption}</p>
@@ -104,6 +97,13 @@ export default function GalleryGrid() {
           </button>
         ))}
       </div>
+
+      {/* Empty state */}
+      {shown.length === 0 && (
+        <div className="gallery-empty">
+          <p className="gallery-empty-text">More photos coming soon.</p>
+        </div>
+      )}
 
       {/* Load more */}
       {hasMore && (

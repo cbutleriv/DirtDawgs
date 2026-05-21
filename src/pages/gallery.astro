@@ -14,7 +14,9 @@ import GalleryGrid from '../components/sections/GalleryGrid';
        01 · PAGE HEADER
   ════════════════════════════════════════════════════════════ -->
   <section class="gallery-header">
-    <div class="container">
+    <div class="page-header-photo" role="img" aria-label="Dirt Dawgs mascot on the infield" style="background-image: url('/images/ending-frame.jpeg');"></div>
+    <div class="page-header-overlay" aria-hidden="true"></div>
+    <div class="container page-header-content">
       <p class="gallery-eyebrow">Gallery</p>
       <h1 class="gallery-h1">Moments in the Dirt.</h1>
     </div>
@@ -37,10 +39,13 @@ import GalleryGrid from '../components/sections/GalleryGrid';
 <style>
   /* ── 01 · Header ─────────────────────────────────────── */
   .gallery-header {
+    position: relative;
     padding-block: var(--section-py);
     border-bottom: 1px solid var(--color-divider-d);
     background-color: var(--color-navy);
+    overflow: hidden;
   }
+
 
   .gallery-eyebrow {
     font-family: var(--font-label);
@@ -126,8 +131,8 @@ import GalleryGrid from '../components/sections/GalleryGrid';
 
   :global(.gallery-img) {
     width: 100%;
+    height: auto;
     display: block;
-    object-fit: cover;
     transition: transform var(--duration-slow) var(--ease-brand);
   }
 
@@ -285,6 +290,33 @@ import GalleryGrid from '../components/sections/GalleryGrid';
     margin: 14px 0 0;
     line-height: 1.5;
     max-width: 60ch;
+  }
+
+  /* Photo count stat */
+  :global(.gallery-stat) {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-2);
+    margin: 0 0 32px;
+  }
+
+  /* Empty filter state */
+  :global(.gallery-empty) {
+    padding: 64px 0;
+    text-align: center;
+  }
+
+  :global(.gallery-empty-text) {
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 0;
   }
 
   /* ── Responsive ──────────────────────────────────────── */
