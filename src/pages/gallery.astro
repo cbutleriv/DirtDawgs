@@ -2,6 +2,30 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/ui/Eyebrow.astro';
 import GalleryGrid from '../components/sections/GalleryGrid';
+import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+
+// Load gallery photos from the content collection, optimize each image
+// (originals are multi-MB), and hand plain URLs to the React island.
+const entries = (await getCollection('gallery')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const photos = await Promise.all(
+  entries.map(async (entry) => {
+    const optimized = await getImage({
+      src: entry.data.image,
+      width: 1400,
+      format: 'webp',
+    });
+    return {
+      src: optimized.src,
+      alt: entry.data.alt,
+      caption: entry.data.caption,
+      category: entry.data.category,
+    };
+  }),
+);
 ---
 
 <BaseLayout
@@ -29,7 +53,7 @@ import GalleryGrid from '../components/sections/GalleryGrid';
     <div class="container">
       <div class="reveal">
         <Eyebrow num="02">Photos</Eyebrow>
-        <GalleryGrid client:load />
+        <GalleryGrid photos={photos} client:load />
       </div>
     </div>
   </section>

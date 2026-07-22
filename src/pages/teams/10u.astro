@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/ui/Eyebrow.astro';
 import Button from '../../components/ui/Button.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const stats = [
   { value: '2023', label: 'Founded' },
@@ -10,19 +12,10 @@ const stats = [
   { value: '11', label: 'Players' },
 ] as const;
 
-const roster = [
-  { num: '#02', name: 'E. Torres',   pos: 'Pitcher'     },
-  { num: '#08', name: 'M. Rivera',   pos: 'Catcher'     },
-  { num: '#17', name: 'A. Herrera',  pos: 'Shortstop'   },
-  { num: '#05', name: 'J. Morales',  pos: '1st Base'    },
-  { num: '#13', name: 'D. Chavez',   pos: '2nd Base'    },
-  { num: '#20', name: 'R. Gutierrez',pos: '3rd Base'    },
-  { num: '#01', name: 'C. Perez',    pos: 'Left Field'  },
-  { num: '#16', name: 'F. Sandoval', pos: 'Center'      },
-  { num: '#10', name: 'O. Jimenez',  pos: 'Right Field' },
-  { num: '#23', name: 'L. Fuentes',  pos: 'Pitcher'     },
-  { num: '#19', name: 'P. Vargas',   pos: 'Utility'     },
-] as const;
+const roster = (await getCollection('players'))
+  .filter((p) => p.data.team === '10u')
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((p) => p.data);
 
 const highlights = [
   { month: 'Apr 2025', title: 'Kern County Spring Showcase', result: 'Champions — undefeated at 4–0. Set the tone early in the season with sharp defense and timely hitting.' },
@@ -112,16 +105,26 @@ const highlights = [
       <div class="roster-grid reveal">
         {roster.map((player) => (
           <div class="roster-card">
-            <img
-              src="/images/player-placeholder.svg"
-              alt={`Player photo — ${player.name}`}
-              class="roster-photo"
-              width="120"
-              height="120"
-            />
-            <span class="roster-num">{player.num}</span>
+            {player.headshot ? (
+              <Image
+                src={player.headshot}
+                alt={`Player photo — ${player.name}`}
+                class="roster-photo"
+                width={240}
+                height={240}
+              />
+            ) : (
+              <img
+                src="/images/player-placeholder.svg"
+                alt={`Player photo — ${player.name}`}
+                class="roster-photo"
+                width="120"
+                height="120"
+              />
+            )}
+            <span class="roster-num">#{player.number}</span>
             <span class="roster-name">{player.name}</span>
-            <span class="roster-pos">{player.pos}</span>
+            <span class="roster-pos">{player.positions.join(' · ')}</span>
           </div>
         ))}
       </div>

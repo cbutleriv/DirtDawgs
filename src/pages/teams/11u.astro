@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/ui/Eyebrow.astro';
 import Button from '../../components/ui/Button.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const stats = [
   { value: '2022', label: 'Founded' },
@@ -10,20 +12,10 @@ const stats = [
   { value: '12', label: 'Players' },
 ] as const;
 
-const roster = [
-  { num: '#07', name: 'A. Reyes',    pos: 'Pitcher'    },
-  { num: '#12', name: 'J. Castillo', pos: 'Catcher'    },
-  { num: '#04', name: 'M. Ortiz',    pos: 'Shortstop'  },
-  { num: '#22', name: 'L. Vega',     pos: '1st Base'   },
-  { num: '#09', name: 'D. Soto',     pos: '2nd Base'   },
-  { num: '#15', name: 'R. Mendez',   pos: '3rd Base'   },
-  { num: '#03', name: 'E. Romero',   pos: 'Left Field' },
-  { num: '#11', name: 'N. Garcia',   pos: 'Center'     },
-  { num: '#18', name: 'T. Lopez',    pos: 'Right Field' },
-  { num: '#06', name: 'C. Aguilar',  pos: 'Pitcher'    },
-  { num: '#21', name: 'B. Flores',   pos: 'Utility'    },
-  { num: '#14', name: 'S. Ramirez',  pos: 'Utility'    },
-] as const;
+const roster = (await getCollection('players'))
+  .filter((p) => p.data.team === '11u')
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((p) => p.data);
 
 const highlights = [
   { month: 'May 2025', title: 'Valley Spring Classic', result: 'Champions — 5–0 run through bracket. Dominant pitching performance by the rotation.' },
@@ -113,16 +105,26 @@ const highlights = [
       <div class="roster-grid reveal">
         {roster.map((player) => (
           <div class="roster-card">
-            <img
-              src="/images/player-placeholder.svg"
-              alt={`Player photo — ${player.name}`}
-              class="roster-photo"
-              width="120"
-              height="120"
-            />
-            <span class="roster-num">{player.num}</span>
+            {player.headshot ? (
+              <Image
+                src={player.headshot}
+                alt={`Player photo — ${player.name}`}
+                class="roster-photo"
+                width={240}
+                height={240}
+              />
+            ) : (
+              <img
+                src="/images/player-placeholder.svg"
+                alt={`Player photo — ${player.name}`}
+                class="roster-photo"
+                width="120"
+                height="120"
+              />
+            )}
+            <span class="roster-num">#{player.number}</span>
             <span class="roster-name">{player.name}</span>
-            <span class="roster-pos">{player.pos}</span>
+            <span class="roster-pos">{player.positions.join(' · ')}</span>
           </div>
         ))}
       </div>

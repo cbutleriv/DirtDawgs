@@ -1,0 +1,122 @@
+# ─────────────────────────────────────────────────────────────
+# Dirt Dawgs content admin (Sveltia CMS — Decap-compatible)
+# Edits here commit to GitHub; Vercel auto-rebuilds the site.
+# ─────────────────────────────────────────────────────────────
+
+backend:
+  name: github
+  repo: cbutleriv/DirtDawgs
+  branch: main
+  # PHASE 3 — set this to the OAuth relay URL once it's deployed, e.g.
+  # base_url: https://dirtdawgs-auth.<subdomain>.workers.dev
+  # (Cloudflare Worker running sveltia-cms-auth, or a Vercel route.)
+
+# Lets the admin test locally with no OAuth:
+#   npx @sveltia/cms-proxy-server   (then open http://localhost:4321/admin/)
+local_backend: true
+
+# Default upload location (per-collection folders below override this).
+media_folder: src/assets/images/uploads
+public_folder: /src/assets/images/uploads
+
+site_url: https://dirtdawgsbaseball.com
+
+collections:
+  # ── Roster players ─────────────────────────────────────────
+  - name: players
+    label: Players
+    label_singular: Player
+    description: Add, edit, or remove players on each team roster.
+    folder: src/content/players
+    create: true
+    delete: true
+    extension: md
+    format: yaml-frontmatter
+    slug: '{{team}}-{{number}}-{{fields.name}}'
+    # Relative media path → stored exactly as Astro's image() expects
+    # (path relative to the markdown file: ../../assets/images/players/…)
+    media_folder: ../../assets/images/players
+    public_folder: ../../assets/images/players
+    fields:
+      - { name: name, label: Name, widget: string, hint: 'e.g. "E. Torres"' }
+      - { name: number, label: Jersey Number, widget: string, hint: 'Digits only, e.g. "02"' }
+      - name: positions
+        label: Positions
+        widget: list
+        summary: '{{fields.position}}'
+        field:
+          name: position
+          label: Position
+          widget: select
+          options:
+            - Pitcher
+            - Catcher
+            - Shortstop
+            - 1st Base
+            - 2nd Base
+            - 3rd Base
+            - Left Field
+            - Center
+            - Right Field
+            - Utility
+      - { name: team, label: Team, widget: select, options: ['10u', '11u'] }
+      - { name: headshot, label: Headshot photo, widget: image, required: false, hint: 'Optional. Falls back to placeholder if empty.' }
+      - { name: order, label: Sort order, widget: number, value_type: int, default: 99 }
+
+  # ── Gallery photos ─────────────────────────────────────────
+  - name: gallery
+    label: Gallery Photos
+    label_singular: Photo
+    description: Upload photos and tag them for the gallery filters.
+    folder: src/content/gallery
+    create: true
+    delete: true
+    extension: md
+    format: yaml-frontmatter
+    slug: '{{fields.alt}}'
+    media_folder: ../../assets/images/gallery
+    public_folder: ../../assets/images/gallery
+    fields:
+      - { name: image, label: Photo, widget: image }
+      - { name: alt, label: Description (alt text), widget: string, hint: 'What the photo shows — used for accessibility + filename.' }
+      - { name: caption, label: Caption, widget: string, required: false, hint: 'Shown on hover / in the lightbox.' }
+      - name: category
+        label: Category
+        widget: select
+        hint: Drives the filter chips on the gallery page.
+        options:
+          - { label: Games, value: GAMES }
+          - { label: Practice, value: PRACTICE }
+          - { label: Team, value: TEAM }
+          - { label: Behind the Scenes, value: BTS }
+      - { name: tags, label: Extra tags, widget: list, required: false }
+      - { name: order, label: Sort order, widget: number, value_type: int, default: 99 }
+
+  # ── Sponsors ───────────────────────────────────────────────
+  - name: sponsors
+    label: Sponsors
+    label_singular: Sponsor
+    description: Manage sponsors and which tier (spot size) they appear in.
+    folder: src/content/sponsors
+    create: true
+    delete: true
+    extension: md
+    format: yaml-frontmatter
+    slug: '{{fields.name}}'
+    media_folder: ../../assets/images/sponsors
+    public_folder: ../../assets/images/sponsors
+    fields:
+      - { name: name, label: Sponsor name, widget: string }
+      - name: tier
+        label: Tier (spot size)
+        widget: select
+        hint: Lead = biggest spot, Community = smallest.
+        options:
+          - { label: 'Lead Partner (largest)', value: lead }
+          - { label: 'Gold', value: gold }
+          - { label: 'Silver', value: silver }
+          - { label: 'Community (smallest)', value: community }
+      - { name: amount, label: Donation amount ($, internal only), widget: number, required: false, value_type: int }
+      - { name: logo, label: Logo, widget: image, required: false, hint: 'Optional. No logo = name shown as text.' }
+      - { name: url, label: Website URL, widget: string, required: false }
+      - { name: order, label: Sort order, widget: number, value_type: int, default: 99 }

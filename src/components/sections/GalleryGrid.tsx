@@ -2,24 +2,12 @@ import { useState } from 'react';
 
 type Category = 'ALL' | 'GAMES' | 'PRACTICE' | 'TEAM' | 'BTS';
 
-interface Photo {
+export interface Photo {
   src: string;
   alt: string;
   caption: string;
   category: Exclude<Category, 'ALL'>;
 }
-
-const PHOTOS: Photo[] = [
-  { src: '/images/players/adam-pitching.jpg',        alt: 'Adam on the mound',        caption: 'Adam — Pitching',          category: 'GAMES' },
-  { src: '/images/players/alfred-pitching.jpeg',     alt: 'Alfred pitching',          caption: 'Alfred — Pitching',        category: 'GAMES' },
-  { src: '/images/players/armando-hitting.jpeg',     alt: 'Armando at the plate',     caption: 'Armando — Hitting',        category: 'GAMES' },
-  { src: '/images/players/christian-hitting-1.jpeg', alt: 'Christian hitting',        caption: 'Christian — Hitting',      category: 'GAMES' },
-  { src: '/images/players/christian-hitting-2.jpg',  alt: 'Christian at the plate',   caption: 'Christian — At the Plate', category: 'GAMES' },
-  { src: '/images/players/christian-scoring.jpg',    alt: 'Christian scoring',        caption: 'Christian — Scoring',      category: 'GAMES' },
-  { src: '/images/players/levi-hitting.jpeg',        alt: 'Levi hitting',             caption: 'Levi — Hitting',           category: 'GAMES' },
-  { src: '/images/players/maverick-hitting.jpeg',    alt: 'Maverick at the plate',    caption: 'Maverick — Hitting',       category: 'GAMES' },
-  { src: '/images/players/michael-catching.jpeg',    alt: 'Michael behind the plate', caption: 'Michael — Catching',       category: 'GAMES' },
-];
 
 const CHIPS: { label: string; value: Category }[] = [
   { label: 'All',               value: 'ALL'      },
@@ -31,12 +19,12 @@ const CHIPS: { label: string; value: Category }[] = [
 
 const PAGE_SIZE = 12;
 
-export default function GalleryGrid() {
+export default function GalleryGrid({ photos }: { photos: Photo[] }) {
   const [active, setActive] = useState<Category>('ALL');
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
-  const filtered = active === 'ALL' ? PHOTOS : PHOTOS.filter((p) => p.category === active);
+  const filtered = active === 'ALL' ? photos : photos.filter((p) => p.category === active);
   const shown = filtered.slice(0, visible);
   const hasMore = visible < filtered.length;
 
@@ -73,7 +61,7 @@ export default function GalleryGrid() {
       </div>
 
       {/* Photo count */}
-      <p className="gallery-stat">9 Photos · Season 2026</p>
+      <p className="gallery-stat">{photos.length} Photos · Season 2026</p>
 
       {/* Masonry grid */}
       <div className="gallery-masonry" role="list">
